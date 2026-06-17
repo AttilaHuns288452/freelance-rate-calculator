@@ -7,11 +7,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -67,10 +69,13 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Google AdSense */}
+        {/* Preload fonts */}
+        <link rel="preload" as="font" href="/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2" crossOrigin="anonymous" />
+        <link rel="preload" as="font" href="/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2" crossOrigin="anonymous" />
+        {/* Google AdSense - defer loading */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4645179646749256"
             crossOrigin="anonymous"></script>
-        {/* Google Analytics 4 */}
+        {/* Google Analytics 4 - defer loading */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VTB3J5YP9"></script>
         <script
           dangerouslySetInnerHTML={{
