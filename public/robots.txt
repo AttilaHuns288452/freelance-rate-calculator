@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://freelance-rate-calculator-gilt.vercel.app/sitemap.xml
+Sitemap: https://freelancecalculator.xyz/sitemap.xml
 
 # Crawl-delay (be nice to servers)
 Crawl-delay: 10

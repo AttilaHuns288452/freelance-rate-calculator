@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://freelance-rate-calculator-gilt.vercel.app",
+    url: "https://freelancecalculator.xyz",
     siteName: "Freelance Lifestyle Calculator",
     title: "Design Your Ideal Freelance Life",
     description: "Tell us the life you want — how much income, hours, and time off — and we'll tell you what to charge to make it real.",
@@ -88,7 +88,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               name: "Freelance Hourly Rate Calculator",
               description: "Calculate your true freelance hourly rate including taxes, benefits, expenses, and non-billable time.",
-              url: "https://freelanceratecalculator.com",
+              url: "https://freelancecalculator.xyz",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
               offers: {
