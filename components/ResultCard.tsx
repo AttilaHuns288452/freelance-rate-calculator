@@ -17,7 +17,10 @@ export default function ResultCard({ results, formatCurrency, formatRate }: Resu
           <p className="text-blue-100 text-sm uppercase tracking-wide mb-1">Your Target Hourly Rate</p>
           <p className="text-5xl md:text-6xl font-bold">{formatRate(results.targetHourlyRate)}</p>
           <p className="mt-2 text-blue-200 text-base">
-            Minimum viable: {formatRate(results.minimumHourlyRate)} •{" "}
+            That's {formatCurrency(results.targetHourlyRate * 8)} per day · {formatCurrency(results.targetHourlyRate * 40)} per week
+          </p>
+          <p className="mt-1 text-blue-200/70 text-sm">
+            Minimum viable: {formatRate(results.minimumHourlyRate)} · 
             Equivalent W-2 salary: {formatCurrency(results.employedEquivalentSalary)}/yr
           </p>
         </div>

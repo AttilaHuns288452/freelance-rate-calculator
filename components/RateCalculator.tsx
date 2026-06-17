@@ -15,6 +15,7 @@ interface FieldConfig {
   isPercent?: boolean;
   help: string;
   tip?: string;
+  lifeLabel?: string;
 }
 
 const DEFAULT_INPUTS: CalculatorInputs = {
@@ -30,44 +31,52 @@ const DEFAULT_INPUTS: CalculatorInputs = {
 
 const FIELD_CONFIG: FieldConfig[] = [
   {
-    key: "desiredAnnualIncome", label: "Desired Annual Take-Home", suffix: "/yr", step: 5000, min: 0,
-    help: "How much money do you want in your pocket each year after taxes? Think of it like your target salary as an employee.",
-    tip: "💡 US median income: ~$60K. If you're experienced: $80K-$150K.",
+    key: "desiredAnnualIncome", label: "Target Annual Income", suffix: "/yr", step: 5000, min: 0,
+    lifeLabel: "How much do you want to earn per year to live your ideal life?",
+    help: "Think about the life you want — not just survival. What income would let you travel, save, buy what you want, and sleep peacefully?",
+    tip: "💡 Dream big: $60K = comfortable solo, $100K = lifestyle freedom, $150K+ = luxuries + savings",
   },
   {
-    key: "billableHoursPerWeek", label: "Billable Hours/Week", suffix: "hrs", step: 1, min: 1, max: 40,
-    help: "Hours you actually CHARGE clients each week — NOT total hours worked. Admin, emails, marketing, and learning don't count.",
-    tip: "💡 Most freelancers bill 20-25 hrs/wk. 40 hrs/wk of work = 25-30 billable max.",
+    key: "billableHoursPerWeek", label: "Hours You Actually Work", suffix: "hrs/wk", step: 1, min: 1, max: 40,
+    lifeLabel: "How many hours per week do you actually want to work?",
+    help: "This is your IDEAL — not your current grind. How many hours do you want to actually sit and bill clients? Remember: this is just client work, not emails or meetings.",
+    tip: "💡 Dream life: 20-25 hrs = balanced life. 30+ hrs = more money, less time off.",
   },
   {
-    key: "weeksWorkedPerYear", label: "Weeks Worked/Year", suffix: "wks", step: 1, min: 1, max: 52,
-    help: "How many weeks per year you actually work and invoice. Subtract vacations, holidays, sick time, and gaps between clients.",
-    tip: "💡 Typical: 46-48 weeks. Employees get ~52 but have paid time off — you don't.",
+    key: "weeksWorkedPerYear", label: "Weeks Off Per Year", suffix: "off", step: 1, min: 0, max: 51,
+    lifeLabel: "How many weeks of freedom do you want each year?",
+    help: "Think: vacations, travel, family time, holidays, sick days, and buffer between clients. The more weeks off, the higher your rate needs to be — but the better your life.",
+    tip: "💡 Dream life: 6 weeks off (46 working) = good balance. 8-10 weeks off = full freedom lifestyle.",
   },
   {
-    key: "monthlyBusinessExpenses", label: "Monthly Business Expenses", suffix: "/mo", step: 50, min: 0,
-    help: "Monthly costs to run your business. Think: software subscriptions, website hosting, internet, phone, coworking space, equipment, marketing.",
-    tip: "💡 Common range: $100-$1,000/mo. Include software (Adobe, Figma, etc.), phone, internet.",
+    key: "monthlyBusinessExpenses", label: "Monthly Cost of Doing Business", suffix: "/mo", step: 50, min: 0,
+    lifeLabel: "What does it cost to run your dream business each month?",
+    help: "Software, internet, phone, coworking space, equipment, marketing — everything you need to run your business smoothly.",
+    tip: "💡 Basic: $100-300/mo. Full setup with tools: $300-1,000/mo.",
   },
   {
-    key: "annualTaxRate", label: "Effective Tax Rate", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
-    help: "Your total tax rate including federal income tax, state tax, and self-employment tax (15.3% just for Social Security + Medicare).",
-    tip: "💡 Freelancers typically pay 25-40% total. Self-employment tax alone is 15.3%.",
+    key: "annualTaxRate", label: "Tax Rate", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
+    lifeLabel: "How much of your income goes to taxes?",
+    help: "Your total tax rate including income tax + self-employment tax. As a freelancer, you pay both sides of Social Security and Medicare.",
+    tip: "💡 Freelancers typically pay 25-40%. Self-employment tax alone is 15.3%.",
   },
   {
     key: "healthInsuranceMonthly", label: "Health Insurance (Monthly)", suffix: "/mo", step: 50, min: 0,
-    help: "Your monthly health insurance premium. As a freelancer, you pay 100% yourself (employers usually cover 50-80%).",
-    tip: "💡 Individual: $400-$800/mo. Family: $1,200-$2,500/mo. Check healthcare.gov for quotes.",
+    lifeLabel: "Peace of mind — health coverage monthly cost",
+    help: "Your health insurance premium. As a freelancer, you're on your own — employers usually cover 50-80% of this. Factor it in so you're never caught off guard.",
+    tip: "💡 Individual: $400-800/mo. Family: $1,200-2,500/mo.",
   },
   {
-    key: "retirementContributionMonthly", label: "Retirement Contribution (Monthly)", suffix: "/mo", step: 50, min: 0,
-    help: "How much you save for retirement each month. Employees often get 401(k) matches — you're on your own.",
-    tip: "💡 Experts recommend 10-15% of income. $500/mo = $6K/yr toward retirement.",
+    key: "retirementContributionMonthly", label: "Retirement Savings (Monthly)", suffix: "/mo", step: 50, min: 0,
+    lifeLabel: "How much do you want to save for your future each month?",
+    help: "Building your future. Employees get 401(k) matches — you don't. But you can build more wealth on your own terms.",
+    tip: "💡 Aim for 10-15% of income. $500/mo = $6K/yr growing with interest.",
   },
   {
-    key: "riskBufferPercent", label: "Risk Buffer", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
-    help: "Extra padding for: unpaid sick days, slow months, client non-payment, equipment breaking, rate negotiation room.",
-    tip: "💡 15-25% is normal. Higher if you're in a variable-income field or just starting out.",
+    key: "riskBufferPercent", label: "Safety Buffer", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
+    lifeLabel: "How much padding do you need to feel secure?",
+    help: "Extra room for: slow months, clients who pay late, equipment breaking, sick days, or just having room to negotiate without stress.",
+    tip: "💡 15-25% is comfortable. Start higher (25%) if you're new or in a variable field.",
   },
 ];
 
@@ -193,7 +202,8 @@ export default function RateCalculator() {
 
       {/* Input Form */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Your Numbers</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">Design Your Ideal Lifestyle</h2>
+        <p className="text-sm text-gray-500 mb-4">Tell us about the life you want — the calculator figures out what you need to charge to make it happen.</p>
 
         {/* Not Sure Banner */}
         <NotSureBanner onApply={handlePresetChange} />

@@ -13,15 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Freelance Hourly Rate Calculator — Know What to Charge",
-  description: "Calculate your true freelance hourly rate. Factor in taxes, benefits, business expenses, and non-billable time. Includes day rate, weekly rate, and monthly retainer equivalents.",
+  title: "Design Your Ideal Freelance Life — Lifestyle Calculator",
+  description: "Not a rate calculator. Tell us the life you want — income, hours, time off — and we'll tell you exactly what to charge to make it real. Free lifestyle designer for freelancers.",
   keywords: [
-    "freelance rate calculator",
-    "hourly rate calculator freelancer",
+    "freelance lifestyle calculator",
+    "ideal freelance life",
+    "freelance income calculator",
     "how much to charge as freelancer",
-    "freelance day rate calculator",
-    "freelance pricing calculator",
-    "contractor rate calculator",
+    "freelance life design",
+    "freelancer rate calculator",
+    "financial freedom freelancer",
   ],
   authors: [{ name: "FreelanceRateCalculator.com" }],
   creator: "FreelanceRateCalculator.com",
@@ -31,22 +32,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://freelance-rate-calculator-gilt.vercel.app",
-    siteName: "Freelance Rate Calculator",
-    title: "Freelance Hourly Rate Calculator — Know What to Charge",
-    description: "Calculate your true freelance hourly rate. Factor in taxes, benefits, business expenses, and non-billable time.",
+    siteName: "Freelance Lifestyle Calculator",
+    title: "Design Your Ideal Freelance Life",
+    description: "Tell us the life you want — how much income, hours, and time off — and we'll tell you what to charge to make it real.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Freelance Rate Calculator - Calculate your true hourly rate",
+        alt: "Freelance Lifestyle Calculator - Design your ideal freelance life",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Freelance Hourly Rate Calculator",
-    description: "Stop guessing. Calculate what you actually need to charge.",
+    title: "Design Your Ideal Freelance Life",
+    description: "Tell us the life you want. We'll tell you what to charge to make it real.",
     images: ["/og-image.png"],
   },
   verification: {
