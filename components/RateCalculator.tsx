@@ -211,9 +211,11 @@ export default function RateCalculator() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {FIELD_CONFIG.map(({ key, label, suffix, step, min, max, isPercent, help, tip }) => (
             <div key={key} className="space-y-1">
-              <label htmlFor={key} className="block text-sm text-gray-600 flex items-center">
-                {label}
-                <HelpIcon help={help} tip={tip} />
+              <label htmlFor={key} className="block text-sm text-gray-600">
+                <span className="flex items-center">
+                  {label}
+                  <HelpIcon help={help} tip={tip} />
+                </span>
               </label>
               <div className="relative">
                 <input

@@ -8,7 +8,7 @@ export default function Home() {
           <h1 className="text-2xl md:text-4xl font-bold">
             Design Your Ideal Freelance Life
           </h1>
-          <p className="mt-2 text-blue-100 text-sm md:text-base max-w-2xl">
+          <p className="mt-2 text-white/80 text-sm md:text-base max-w-2xl">
             This isn't a rate calculator. It's a <em className="font-semibold text-white">lifestyle designer</em>. 
             Tell us the life you want — how much income, how many hours, how much time off — 
             and we'll tell you exactly what to charge to make it real.
