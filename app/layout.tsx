@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://freelanceratecalculator.com",
+    url: "https://freelance-rate-calculator-gilt.vercel.app",
     siteName: "Freelance Rate Calculator",
     title: "Freelance Hourly Rate Calculator — Know What to Charge",
     description: "Calculate your true freelance hourly rate. Factor in taxes, benefits, business expenses, and non-billable time.",

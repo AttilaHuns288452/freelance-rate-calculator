@@ -4,7 +4,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const BASE_URL = "https://freelanceratecalculator.com";
+// Change this to your custom domain when you buy one!
+// Current: your Vercel deployment URL
+const BASE_URL = "https://freelance-rate-calculator-gilt.vercel.app";
 const PAGES = [
   { url: "", changefreq: "weekly", priority: 1.0 },
   { url: "/privacy", changefreq: "yearly", priority: 0.3 },
