@@ -39,7 +39,23 @@ ${urls}
   
   fs.writeFileSync(publicPath, sitemap);
   fs.writeFileSync(outPath, sitemap);
-  console.log(`✅ Sitemap generated at ${publicPath} and ${outPath}`);
+
+  // Also update robots.txt with correct sitemap URL
+  const robotsTxt = `# Robots.txt for Freelance Rate Calculator
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: ${BASE_URL}/sitemap.xml
+
+# Crawl-delay (be nice to servers)
+Crawl-delay: 10
+`;
+  const robotsPublicPath = path.join(__dirname, "..", "public", "robots.txt");
+  const robotsOutPath = path.join(__dirname, "..", "out", "robots.txt");
+  fs.writeFileSync(robotsPublicPath, robotsTxt);
+  fs.writeFileSync(robotsOutPath, robotsTxt);
+  console.log(`✅ Sitemap and robots.txt generated`);
 }
 
 generateSitemap();
