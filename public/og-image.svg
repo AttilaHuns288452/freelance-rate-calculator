@@ -1,0 +1,7 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1e40af"/>
+  <text x="600" y="280" font-family="system-ui, sans-serif" font-size="64" font-weight="bold" fill="white" text-anchor="middle">Freelance Rate Calculator</text>
+  <text x="600" y="360" font-family="system-ui, sans-serif" font-size="28" fill="#bfdbfe" text-anchor="middle">Know what to charge. Factor in taxes, benefits, and non-billable time.</text>
+  <rect x="500" y="420" width="200" height="4" fill="#3b82f6" rx="2"/>
+  <text x="600" y="480" font-family="system-ui, sans-serif" font-size="20" fill="#93c5fd" text-anchor="middle">freelanceratecalculator.com</text>
+</svg>
