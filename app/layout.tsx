@@ -119,13 +119,28 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <footer className="mt-auto py-8 px-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white">
-          <p>Freelance Rate Calculator — Free tool for freelancers &amp; contractors</p>
-          <p className="mt-1">
-            <a href="/privacy" className="text-blue-600 hover:underline mr-4">Privacy</a>
-            <a href="/terms" className="text-blue-600 hover:underline mr-4">Terms</a>
-            <a href="/affiliate-disclosure" className="text-blue-600 hover:underline">Affiliate Disclosure</a>
-          </p>
+        <footer className="mt-auto py-6 px-4 text-center text-sm text-gray-400 border-t border-gray-100 bg-white">
+          <div className="max-w-4xl mx-auto">
+            <p>💼 Freelance Lifestyle Calculator — Free tool for freelancers</p>
+            <div className="flex flex-wrap justify-center gap-3 mt-2 text-xs">
+              <a href="/privacy" className="hover:text-blue-600">Privacy</a>
+              <span className="text-gray-300">·</span>
+              <a href="/terms" className="hover:text-blue-600">Terms</a>
+            </div>
+            <p className="mt-3 text-[10px] text-gray-300">
+              🛠️ Recommendations: <a href="https://www.freshbooks.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">FreshBooks</a>
+              <span> · </span>
+              <a href="https://www.upwork.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Upwork</a>
+              <span> · </span>
+              <a href="https://mercury.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Mercury</a>
+              <span> · </span>
+              <a href="https://www.hellobonsai.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Bonsai</a>
+              <span> · </span>
+              <a href="https://quickbooks.intuit.com/self-employed/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">QuickBooks</a>
+              <span> · </span>
+              <a href="https://www.toptal.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Toptal</a>
+            </p>
+          </div>
         </footer>
       </body>
     </html>
