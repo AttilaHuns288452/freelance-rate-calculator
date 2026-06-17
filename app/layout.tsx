@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   verification: {
-    google: "google-site-verification-code-here", // Replace after GSC setup
+    google: "85ErC2_tv1i_Oyxjrs35UXg9glDunSBPtXzjyyHbgds",
   },
 };
 
