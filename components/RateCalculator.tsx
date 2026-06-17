@@ -285,6 +285,12 @@ export default function RateCalculator() {
         </div>
       )}
 
+      {/* Feedback Section */}
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm" id="feedback">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">💬 Help Us Improve</h2>
+        <FeedbackForm />
+      </div>
+
       {/* Methodology / SEO Content */}
       <details className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
         <summary className="cursor-pointer font-medium text-gray-900">How this calculation works</summary>
@@ -296,5 +302,50 @@ export default function RateCalculator() {
         </div>
       </details>
     </div>
+  );
+}
+
+// Simple feedback form component
+function FeedbackForm() {
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const existing = JSON.parse(localStorage.getItem("freelance-feedback") || "[]");
+    existing.push({ name, message, date: new Date().toISOString() });
+    localStorage.setItem("freelance-feedback", JSON.stringify(existing));
+    setSent(true);
+  };
+
+  if (sent) {
+    return <p className="text-green-600 font-medium text-sm">Thank you for your feedback! 🙏</p>;
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <input
+        type="text"
+        placeholder="Your name (optional)"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+      />
+      <textarea
+        placeholder="How can we make this calculator better? Any features you'd like?"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        required
+        rows={3}
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+      />
+      <button
+        type="submit"
+        className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Send Feedback 💬
+      </button>
+    </form>
   );
 }
