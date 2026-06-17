@@ -13,6 +13,8 @@ interface FieldConfig {
   min: number;
   max?: number;
   isPercent?: boolean;
+  help: string;
+  tip?: string;
 }
 
 const DEFAULT_INPUTS: CalculatorInputs = {
@@ -27,15 +29,115 @@ const DEFAULT_INPUTS: CalculatorInputs = {
 };
 
 const FIELD_CONFIG: FieldConfig[] = [
-  { key: "desiredAnnualIncome", label: "Desired Annual Take-Home", suffix: "/yr", step: 5000, min: 0 },
-  { key: "billableHoursPerWeek", label: "Billable Hours/Week", suffix: "hrs", step: 1, min: 1, max: 40 },
-  { key: "weeksWorkedPerYear", label: "Weeks Worked/Year", suffix: "wks", step: 1, min: 1, max: 52 },
-  { key: "monthlyBusinessExpenses", label: "Monthly Business Expenses", suffix: "/mo", step: 50, min: 0 },
-  { key: "annualTaxRate", label: "Effective Tax Rate", suffix: "%", step: 1, min: 0, max: 50, isPercent: true },
-  { key: "healthInsuranceMonthly", label: "Health Insurance (Monthly)", suffix: "/mo", step: 50, min: 0 },
-  { key: "retirementContributionMonthly", label: "Retirement Contribution (Monthly)", suffix: "/mo", step: 50, min: 0 },
-  { key: "riskBufferPercent", label: "Risk Buffer", suffix: "%", step: 1, min: 0, max: 50, isPercent: true },
+  {
+    key: "desiredAnnualIncome", label: "Desired Annual Take-Home", suffix: "/yr", step: 5000, min: 0,
+    help: "How much money do you want in your pocket each year after taxes? Think of it like your target salary as an employee.",
+    tip: "💡 US median income: ~$60K. If you're experienced: $80K-$150K.",
+  },
+  {
+    key: "billableHoursPerWeek", label: "Billable Hours/Week", suffix: "hrs", step: 1, min: 1, max: 40,
+    help: "Hours you actually CHARGE clients each week — NOT total hours worked. Admin, emails, marketing, and learning don't count.",
+    tip: "💡 Most freelancers bill 20-25 hrs/wk. 40 hrs/wk of work = 25-30 billable max.",
+  },
+  {
+    key: "weeksWorkedPerYear", label: "Weeks Worked/Year", suffix: "wks", step: 1, min: 1, max: 52,
+    help: "How many weeks per year you actually work and invoice. Subtract vacations, holidays, sick time, and gaps between clients.",
+    tip: "💡 Typical: 46-48 weeks. Employees get ~52 but have paid time off — you don't.",
+  },
+  {
+    key: "monthlyBusinessExpenses", label: "Monthly Business Expenses", suffix: "/mo", step: 50, min: 0,
+    help: "Monthly costs to run your business. Think: software subscriptions, website hosting, internet, phone, coworking space, equipment, marketing.",
+    tip: "💡 Common range: $100-$1,000/mo. Include software (Adobe, Figma, etc.), phone, internet.",
+  },
+  {
+    key: "annualTaxRate", label: "Effective Tax Rate", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
+    help: "Your total tax rate including federal income tax, state tax, and self-employment tax (15.3% just for Social Security + Medicare).",
+    tip: "💡 Freelancers typically pay 25-40% total. Self-employment tax alone is 15.3%.",
+  },
+  {
+    key: "healthInsuranceMonthly", label: "Health Insurance (Monthly)", suffix: "/mo", step: 50, min: 0,
+    help: "Your monthly health insurance premium. As a freelancer, you pay 100% yourself (employers usually cover 50-80%).",
+    tip: "💡 Individual: $400-$800/mo. Family: $1,200-$2,500/mo. Check healthcare.gov for quotes.",
+  },
+  {
+    key: "retirementContributionMonthly", label: "Retirement Contribution (Monthly)", suffix: "/mo", step: 50, min: 0,
+    help: "How much you save for retirement each month. Employees often get 401(k) matches — you're on your own.",
+    tip: "💡 Experts recommend 10-15% of income. $500/mo = $6K/yr toward retirement.",
+  },
+  {
+    key: "riskBufferPercent", label: "Risk Buffer", suffix: "%", step: 1, min: 0, max: 50, isPercent: true,
+    help: "Extra padding for: unpaid sick days, slow months, client non-payment, equipment breaking, rate negotiation room.",
+    tip: "💡 15-25% is normal. Higher if you're in a variable-income field or just starting out.",
+  },
 ];
+
+function HelpIcon({ help, tip }: { help: string; tip?: string }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <span className="relative inline-block">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        onBlur={() => setTimeout(() => setOpen(false), 200)}
+        className="inline-flex items-center justify-center w-4 h-4 ml-1 text-gray-400 hover:text-blue-500 focus:outline-none transition-colors"
+        aria-label="Help"
+      >
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.529 9.988a2.502 2.502 0 115.191.237C14.43 12.45 12.5 13.5 12.5 15m0 2.5h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 w-72 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl">
+          <p className="leading-relaxed">{help}</p>
+          {tip && <p className="mt-2 text-blue-300 leading-relaxed">{tip}</p>}
+          <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
+        </div>
+      )}
+    </span>
+  );
+}
+
+function NotSureBanner({ onApply }: { onApply: (presetKey: string) => void }) {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div className="mb-2">
+      <button
+        type="button"
+        onClick={() => setShow(!show)}
+        className="text-xs text-blue-600 hover:text-blue-800 hover:underline font-medium flex items-center gap-1"
+      >
+        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Not sure what numbers to put? Try a preset for your situation
+      </button>
+      {show && (
+        <div className="mt-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p className="text-sm text-blue-900 font-medium mb-3">Pick a preset to auto-fill realistic numbers:</p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { key: "us-web-dev", label: "🇺🇸 US Web Developer", desc: "$100K target, 25hrs/wk, 46 wks" },
+              { key: "us-designer", label: "🇺🇸 US Designer", desc: "$80K target, 22hrs/wk, 46 wks" },
+              { key: "uk-contractor", label: "🇬🇧 UK Contractor", desc: "£70K target, 24hrs/wk, 44 wks" },
+              { key: "starter-side-hustle", label: "🚀 Side Hustle Starter", desc: "$30K target, 10hrs/wk, 48 wks" },
+            ].map(({ key, label, desc }) => (
+              <button
+                key={key}
+                onClick={() => { onApply(key); setShow(false); }}
+                className="flex-1 min-w-[160px] p-3 bg-white rounded-lg border border-blue-200 hover:border-blue-400 hover:shadow-sm transition-all text-left"
+              >
+                <p className="text-sm font-medium text-gray-900">{label}</p>
+                <p className="text-xs text-gray-500 mt-1">{desc}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function RateCalculator() {
   const [inputs, setInputs] = useState<CalculatorInputs>(DEFAULT_INPUTS);
@@ -92,11 +194,16 @@ export default function RateCalculator() {
       {/* Input Form */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">Your Numbers</h2>
+
+        {/* Not Sure Banner */}
+        <NotSureBanner onApply={handlePresetChange} />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {FIELD_CONFIG.map(({ key, label, suffix, step, min, max, isPercent }) => (
+          {FIELD_CONFIG.map(({ key, label, suffix, step, min, max, isPercent, help, tip }) => (
             <div key={key} className="space-y-1">
-              <label htmlFor={key} className="block text-sm text-gray-600">
+              <label htmlFor={key} className="block text-sm text-gray-600 flex items-center">
                 {label}
+                <HelpIcon help={help} tip={tip} />
               </label>
               <div className="relative">
                 <input
@@ -169,7 +276,7 @@ export default function RateCalculator() {
       )}
 
       {/* Methodology / SEO Content */}
-      <details className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm no-print">
+      <details className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
         <summary className="cursor-pointer font-medium text-gray-900">How this calculation works</summary>
         <div className="mt-4 space-y-3 text-sm text-gray-600">
           <p><strong>Formula:</strong> (Desired Income + Business Expenses + Benefits) ÷ (1 − Tax Rate) × (1 + Risk Buffer) ÷ Annual Billable Hours</p>
