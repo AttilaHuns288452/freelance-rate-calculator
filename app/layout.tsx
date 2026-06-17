@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -110,6 +111,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-gray-50">
         {children}
+        <Analytics />
         <footer className="mt-auto py-8 px-4 text-center text-sm text-gray-500 border-t border-gray-200 bg-white">
           <p>Freelance Rate Calculator — Free tool for freelancers &amp; contractors</p>
           <p className="mt-1">
