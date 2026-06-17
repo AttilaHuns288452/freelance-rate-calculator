@@ -55,7 +55,10 @@ Crawl-delay: 10
   const robotsOutPath = path.join(__dirname, "..", "out", "robots.txt");
   fs.writeFileSync(robotsPublicPath, robotsTxt);
   fs.writeFileSync(robotsOutPath, robotsTxt);
-  console.log(`✅ Sitemap and robots.txt generated`);
+  // Copy ads.txt to out folder
+  const adsTxt = fs.readFileSync(path.join(__dirname, "..", "public", "ads.txt"), "utf-8");
+  fs.writeFileSync(path.join(__dirname, "..", "out", "ads.txt"), adsTxt);
+  console.log(`✅ Sitemap, robots.txt, and ads.txt generated`);
 }
 
 generateSitemap();

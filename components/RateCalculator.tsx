@@ -275,7 +275,7 @@ export default function RateCalculator() {
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Sponsored</h2>
           <ins className="adsbygoogle"
                style={{ display: "block" }}
-               data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-client="ca-pub-4645179646749256"
                data-ad-slot="XXXXXXXXXX"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
