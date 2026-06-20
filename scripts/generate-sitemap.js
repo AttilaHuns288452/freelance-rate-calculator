@@ -9,13 +9,13 @@ const path = require("path");
 const BASE_URL = "https://freelancecalculator.xyz";
 const PAGES = [
   { url: "", changefreq: "weekly", priority: 1.0 },
-  { url: "/privacy", changefreq: "yearly", priority: 0.3 },
-  { url: "/terms", changefreq: "yearly", priority: 0.3 },
-  { url: "/affiliate-disclosure", changefreq: "yearly", priority: 0.3 },
-  { url: "/blog", changefreq: "weekly", priority: 0.8 },
-  { url: "/blog/freelance-hourly-rate-calculator-guide", changefreq: "monthly", priority: 0.7 },
-  { url: "/blog/how-much-to-charge-freelancer-day-rate-vs-hourly", changefreq: "monthly", priority: 0.7 },
-  { url: "/blog/freelance-tax-deductions-calculator-write-offs", changefreq: "monthly", priority: 0.7 },
+  { url: "/privacy/", changefreq: "yearly", priority: 0.3 },
+  { url: "/terms/", changefreq: "yearly", priority: 0.3 },
+  { url: "/affiliate-disclosure/", changefreq: "yearly", priority: 0.3 },
+  { url: "/blog/", changefreq: "weekly", priority: 0.8 },
+  { url: "/blog/freelance-hourly-rate-calculator-guide/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/how-much-to-charge-freelancer-day-rate-vs-hourly/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/freelance-tax-deductions-calculator-write-offs/", changefreq: "monthly", priority: 0.7 },
 ];
 
 function generateSitemap() {
