@@ -252,6 +252,7 @@ export default function RateCalculator() {
       {/* Results */}
       {results && (
         <>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Your Rate Breakdown</h2>
           <ResultCard results={results} formatCurrency={formatCurrency} formatRate={formatRate} />
           <div className="flex justify-center mt-6 no-print">
             <button
@@ -274,7 +275,7 @@ export default function RateCalculator() {
       {/* AdSense placeholder */}
       {results && (
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm no-print">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Sponsored</h2>
+          <p className="text-lg font-semibold text-gray-900 mb-4">Sponsored</p>
           <ins className="adsbygoogle"
                style={{ display: "block" }}
                data-ad-client="ca-pub-4645179646749256"
