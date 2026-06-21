@@ -4,6 +4,10 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Freelance Rate Calculator Blog - Guides & Resources",
   description: "Expert guides on freelance pricing, tax deductions, rate calculation, and building a profitable freelance business.",
+  robots: "index, follow",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/blog",
+  },
 };
 
 const posts = [

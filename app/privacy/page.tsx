@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy - Freelance Rate Calculator",
   description: "Privacy policy for Freelance Rate Calculator. We respect your privacy and collect minimal data.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/privacy",
+  },
 };
 
 export default function Privacy() {

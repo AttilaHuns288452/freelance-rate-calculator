@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How Much Should You Charge as a Freelancer? (Day Rate vs Hourly)",
   description: "Day rate vs hourly rate: which pricing model earns you more? We break down the math, pros/cons, and when to use each.",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/blog/how-much-to-charge-freelancer-day-rate-vs-hourly",
+  },
   openGraph: {
     title: "How Much Should You Charge as a Freelancer? (Day Rate vs Hourly)",
     description: "Day rate vs hourly rate: which pricing model earns you more? We break down the math.",

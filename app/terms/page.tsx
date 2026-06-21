@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Terms of Service - Freelance Rate Calculator",
   description: "Terms of service for Freelance Rate Calculator. Free tool for educational purposes only.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/terms",
+  },
 };
 
 export default function Terms() {

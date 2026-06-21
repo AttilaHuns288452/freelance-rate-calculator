@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "Affiliate Disclosure - Freelance Rate Calculator",
   description: "Affiliate disclosure for Freelance Rate Calculator. We earn commissions from some recommended tools.",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/affiliate-disclosure",
+  },
 };
 
 export default function AffiliateDisclosure() {

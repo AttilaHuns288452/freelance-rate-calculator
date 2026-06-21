@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Freelance Tax Deductions Calculator: What You Can Write Off",
   description: "Maximize your tax savings with our comprehensive guide to freelance deductions. Home office, equipment, software, health insurance, and more.",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz/blog/freelance-tax-deductions-calculator-write-offs",
+  },
   openGraph: {
     title: "Freelance Tax Deductions Calculator: What You Can Write Off",
     description: "Maximize your tax savings with our comprehensive guide to freelance deductions.",

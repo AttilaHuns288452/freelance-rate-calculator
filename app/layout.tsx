@@ -31,7 +31,11 @@ export const metadata: Metadata = {
   authors: [{ name: "FreelanceRateCalculator.com" }],
   creator: "FreelanceRateCalculator.com",
   publisher: "FreelanceRateCalculator.com",
+  metadataBase: new URL("https://freelancecalculator.xyz"),
   robots: "index, follow",
+  alternates: {
+    canonical: "https://freelancecalculator.xyz",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -128,17 +132,17 @@ export default function RootLayout({
               <a href="/terms" className="hover:text-blue-600">Terms</a>
             </div>
             <p className="mt-3 text-[10px] text-gray-300">
-              🛠️ Recommendations: <a href="https://www.freshbooks.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">FreshBooks</a>
-              <span> · </span>
-              <a href="https://www.upwork.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Upwork</a>
-              <span> · </span>
-              <a href="https://mercury.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Mercury</a>
-              <span> · </span>
-              <a href="https://www.hellobonsai.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Bonsai</a>
-              <span> · </span>
-              <a href="https://quickbooks.intuit.com/self-employed/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">QuickBooks</a>
-              <span> · </span>
-              <a href="https://www.toptal.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer">Toptal</a>
+                🛠️ Recommendations: <a href="https://www.freshbooks.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">FreshBooks</a>
+                <span> · </span>
+                <a href="https://www.upwork.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Upwork</a>
+                <span> · </span>
+                <a href="https://mercury.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Mercury</a>
+                <span> · </span>
+                <a href="https://www.hellobonsai.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Bonsai</a>
+                <span> · </span>
+                <a href="https://quickbooks.intuit.com/self-employed/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">QuickBooks</a>
+                <span> · </span>
+                <a href="https://www.toptal.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Toptal</a>
             </p>
           </div>
         </footer>
