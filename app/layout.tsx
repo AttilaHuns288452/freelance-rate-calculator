@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: "#1d4ed8",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +40,9 @@ export const metadata: Metadata = {
   robots: "index, follow",
   alternates: {
     canonical: "https://freelancecalculator.xyz",
+  },
+  other: {
+    "google-site-verification": "85ErC2_tv1i_Oyxjrs35UXg9glDunSBPtXzjyyHbgds",
   },
   openGraph: {
     type: "website",
@@ -117,6 +125,35 @@ export default function RootLayout({
               ],
             }),
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "FreelanceRateCalculator.com",
+            url: "https://freelancecalculator.xyz",
+            logo: "https://freelancecalculator.xyz/og-image.png",
+            description: "Free freelance rate and lifestyle calculator for freelancers.",
+          })}}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Freelance Lifestyle Calculator",
+            url: "https://freelancecalculator.xyz",
+            description: "Design your ideal freelance lifestyle and calculate your rate.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://freelancecalculator.xyz/blog?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+          })}}
         />
       </head>
       <body className="min-h-full flex flex-col bg-gray-50">

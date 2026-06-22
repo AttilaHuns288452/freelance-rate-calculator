@@ -275,7 +275,7 @@ export default function RateCalculator() {
       {/* AdSense placeholder */}
       {results && (
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm no-print">
-          <p className="text-lg font-semibold text-gray-900 mb-4">Sponsored</p>
+          <p className="text-xs text-gray-400 mb-4"><small>Sponsored</small></p>
           <ins className="adsbygoogle"
                style={{ display: "block" }}
                data-ad-client="ca-pub-4645179646749256"
