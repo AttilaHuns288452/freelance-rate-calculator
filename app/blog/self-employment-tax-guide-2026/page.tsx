@@ -39,7 +39,7 @@ export default function Post() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10 blog-article">
           <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
             <p className="lead">Self-employment tax is the #1 surprise for new freelancers. Here's everything you need to know — the rate, how to pay quarterly, what you can deduct, and how to avoid the most common (and expensive) mistakes.</p>
 

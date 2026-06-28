@@ -52,7 +52,7 @@ export default function FreelanceHourlyRateGuide() {
                         </h1>
           </div>
         </header>
-<div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+<div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10 blog-article">
         <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
           <p className="lead text-xl text-gray-600">
             Most freelancers undercharge by 30-50% because they only think about "take-home pay" and forget taxes, benefits, unpaid time off, and business expenses. This guide walks you through the complete calculation.

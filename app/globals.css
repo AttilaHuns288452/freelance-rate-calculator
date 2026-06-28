@@ -77,6 +77,207 @@ details[open] summary::after {
   transform: rotate(-135deg);
 }
 
+/* ═══════════════════════════════════════════════
+   BLOG / PROSE TYPOGRAPHY — improved readability
+   ═══════════════════════════════════════════════ */
+
+/* Article inner spacing — more breathing room */
+.prose {
+  --tw-prose-body: #374151;
+  --tw-prose-headings: #111827;
+  --tw-prose-links: #2563eb;
+  --tw-prose-bold: #111827;
+  --tw-prose-quotes: #111827;
+  --tw-prose-quote-borders: #2563eb;
+  --tw-prose-captions: #6b7280;
+  --tw-prose-th-borders: #d1d5db;
+  --tw-prose-td-borders: #e5e7eb;
+}
+
+/* Limit line length for readability */
+.blog-article {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Better heading spacing */
+.prose h2 {
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+
+.prose h2 + h3 {
+  margin-top: 0.5em;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  line-height: 1.8;
+}
+
+.prose p.lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #4b5563;
+  margin-top: 0;
+  margin-bottom: 2em;
+}
+
+/* Separator spacing */
+.prose hr {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+/* Lists */
+.prose ul, .prose ol {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+
+.prose li > strong {
+  display: inline;
+}
+
+/* Table styling */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 0.9rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.prose thead {
+  background: #f9fafb;
+}
+
+.prose thead th {
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.prose tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: top;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Code blocks */
+.prose code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #1f2937;
+}
+
+.prose pre {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  font-style: normal;
+  border-left-width: 4px;
+  border-left-color: #2563eb;
+  background: #eff6ff;
+  padding: 1em 1.5em;
+  border-radius: 0 8px 8px 0;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose blockquote p:first-of-type {
+  margin-top: 0;
+}
+
+.prose blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Styled tip boxes */
+.prose .tip-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #2563eb;
+  border-radius: 12px;
+  padding: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.prose .tip-box p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose .tip-box strong {
+  color: #1e3a8a;
+}
+
+/* Image styling */
+.prose img {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* Responsive fine-tune */
+@media (max-width: 640px) {
+  .prose {
+    font-size: 0.95rem;
+  }
+  .prose h2 {
+    font-size: 1.3rem;
+  }
+  .prose table {
+    font-size: 0.8rem;
+  }
+  .prose thead th,
+  .prose tbody td {
+    padding: 8px 10px;
+  }
+}
+
 /* Print styles */
 @media print {
   header, footer, .no-print {

@@ -52,7 +52,7 @@ export default function Post() {
           </div>
         </header>
 
-        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10 blog-article">
           <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
             <p className="lead">You already know freelancers pay more taxes and get no PTO. But <em>how much more?</em> The real gap is $20,000–$50,000 a year for the same lifestyle. Here's the full breakdown with 2026 numbers.</p>
 
