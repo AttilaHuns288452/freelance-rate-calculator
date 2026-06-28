@@ -160,27 +160,21 @@ export default function RootLayout({
         {children}
         <Analytics />
         <SpeedInsights />
-        <footer className="mt-auto py-6 px-4 text-center text-sm text-gray-400 border-t border-gray-100 bg-white">
+        <footer className="mt-auto py-8 px-4 text-center text-sm text-gray-400 border-t border-gray-100 bg-white">
           <div className="max-w-4xl mx-auto">
-            <p>💼 Freelance Lifestyle Calculator — Free tool for freelancers</p>
-            <div className="flex flex-wrap justify-center gap-3 mt-2 text-xs">
+            <div className="flex flex-wrap justify-center gap-5 mt-2 text-xs">
+              <a href="/" className="hover:text-blue-600">Home</a>
+              <a href="/blog" className="hover:text-blue-600">Blog</a>
+              <a href="/about" className="hover:text-blue-600">About</a>
+              <a href="/resources" className="hover:text-blue-600">Resources</a>
+              <a href="/contact" className="hover:text-blue-600">Contact</a>
               <a href="/privacy" className="hover:text-blue-600">Privacy</a>
-              <span className="text-gray-300">·</span>
               <a href="/terms" className="hover:text-blue-600">Terms</a>
             </div>
-            <p className="mt-3 text-[10px] text-gray-300">
-                🛠️ Recommendations: <a href="https://www.freshbooks.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">FreshBooks</a>
-                <span> · </span>
-                <a href="https://www.upwork.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Upwork</a>
-                <span> · </span>
-                <a href="https://mercury.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Mercury</a>
-                <span> · </span>
-                <a href="https://www.hellobonsai.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Bonsai</a>
-                <span> · </span>
-                <a href="https://quickbooks.intuit.com/self-employed/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">QuickBooks</a>
-                <span> · </span>
-                <a href="https://www.toptal.com/" className="hover:text-blue-500" target="_blank" rel="noopener noreferrer nofollow">Toptal</a>
+            <p className="mt-4 text-[11px] text-gray-300 max-w-xl mx-auto leading-relaxed">
+              We recommend tools we believe in. Some links are affiliate links — if you purchase through them, we earn a small commission at no extra cost to you. See our <a href="/resources" className="hover:text-blue-500">Resources page</a> for details.
             </p>
+            <p className="mt-2 text-xs text-gray-400">💼 Freelance Lifestyle Calculator — Free tool for freelancers. Not financial advice.</p>
           </div>
         </footer>
       </body>

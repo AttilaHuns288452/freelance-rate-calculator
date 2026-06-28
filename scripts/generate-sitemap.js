@@ -12,10 +12,17 @@ const PAGES = [
   { url: "/privacy/", changefreq: "yearly", priority: 0.3 },
   { url: "/terms/", changefreq: "yearly", priority: 0.3 },
   { url: "/affiliate-disclosure/", changefreq: "yearly", priority: 0.3 },
+  { url: "/about/", changefreq: "monthly", priority: 0.5 },
+  { url: "/contact/", changefreq: "yearly", priority: 0.3 },
+  { url: "/resources/", changefreq: "monthly", priority: 0.5 },
   { url: "/blog/", changefreq: "weekly", priority: 0.8 },
   { url: "/blog/freelance-hourly-rate-calculator-guide/", changefreq: "monthly", priority: 0.7 },
   { url: "/blog/how-much-to-charge-freelancer-day-rate-vs-hourly/", changefreq: "monthly", priority: 0.7 },
   { url: "/blog/freelance-tax-deductions-calculator-write-offs/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/freelancer-vs-employee-cost-comparison-2026/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/freelance-retainer-rate-calculator-templates/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/self-employment-tax-guide-2026/", changefreq: "monthly", priority: 0.7 },
+  { url: "/blog/freelance-pricing-strategies-value-based/", changefreq: "monthly", priority: 0.7 },
 ];
 
 function generateSitemap() {

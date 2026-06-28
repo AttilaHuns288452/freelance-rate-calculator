@@ -1,23 +1,41 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Freelance Hourly Rate Calculator: Complete Guide 2024",
+  title: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",
   description: "Learn how to calculate your true freelance hourly rate with our step-by-step guide. Includes taxes, expenses, benefits, and risk buffer.",
   alternates: {
     canonical: "https://freelancecalculator.xyz/blog/freelance-hourly-rate-calculator-guide",
   },
   openGraph: {
-    title: "Freelance Hourly Rate Calculator: Complete Guide 2024",
+    title: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",
     description: "Learn how to calculate your true freelance hourly rate with our step-by-step guide.",
     type: "article",
     publishedTime: "2024-01-15",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",
+    description: "Learn how to calculate your true freelance hourly rate with our step-by-step guide.",
+  },
+  authors: [{ name: "FreelanceRateCalculator.com" }],
 };
 
 export default function FreelanceHourlyRateGuide() {
   return (
-    <article className="min-h-screen bg-gray-50 py-12 px-4">
+    <>
+      <Script id="article-schema" type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org", "@type": "Article",
+          headline: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",
+          description: "Learn how to calculate your true freelance hourly rate with our step-by-step guide.",
+          datePublished: "2024-01-15", dateModified: "2026-06-28",
+          author: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
+          publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
+        }),
+      }} />
+      <article className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-3xl mx-auto">
         <header className="mb-10">
           <Link
@@ -29,9 +47,9 @@ export default function FreelanceHourlyRateGuide() {
             </svg>
             Back to Blog
           </Link>
-          <time className="text-gray-500 text-sm mb-4 block">January 15, 2024 · 8 min read</time>
+          <time className="text-gray-500 text-sm mb-4 block">Published January 15, 2024 · Updated June 28, 2026 · 8 min read</time>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            Freelance Hourly Rate Calculator: Complete Guide 2024
+            Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)
           </h1>
         </header>
 
@@ -135,5 +153,7 @@ export default function FreelanceHourlyRateGuide() {
         </footer>
       </div>
     </article>
+      <p className="text-center text-xs text-gray-400 mt-4">Published January 2024 · Updated June 2026 by FreelanceRateCalculator.com</p>
+    </>
   );
 }
