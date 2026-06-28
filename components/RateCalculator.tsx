@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Script from "next/script";
 import { CalculatorInputs, CalculatorResults, calculateFreelanceRate, PRESETS, formatCurrency, formatRate } from "@/lib/calculations";
 import ResultCard from "./ResultCard";
-import AffiliateLinks from "./AffiliateLinks";
+import Link from "next/link";
 
 interface FieldConfig {
   key: keyof CalculatorInputs;
@@ -205,7 +206,6 @@ export default function RateCalculator() {
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Design Your Ideal Lifestyle</h2>
         <p className="text-sm text-gray-500 mb-4">Tell us about the life you want — the calculator figures out what you need to charge to make it happen.</p>
 
-        {/* Not Sure Banner */}
         <NotSureBanner onApply={handlePresetChange} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -266,89 +266,21 @@ export default function RateCalculator() {
               Save as PDF
             </button>
           </div>
-          <div className="no-print">
-            <AffiliateLinks />
+          {/* AdSense placeholder */}
+          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm no-print">
+            <p className="text-xs text-gray-400 mb-4"><small>Sponsored</small></p>
+            <ins className="adsbygoogle"
+                 style={{ display: "block" }}
+                 data-ad-client="ca-pub-4645179646749256"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <Script id="adsense-init" strategy="lazyOnload" dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+            }} />
           </div>
         </>
       )}
-
-      {/* AdSense placeholder */}
-      {results && (
-        <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm no-print">
-          <p className="text-xs text-gray-400 mb-4"><small>Sponsored</small></p>
-          <ins className="adsbygoogle"
-               style={{ display: "block" }}
-               data-ad-client="ca-pub-4645179646749256"
-               data-ad-slot="XXXXXXXXXX"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      )}
-
-      {/* Feedback Section */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm" id="feedback">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">💬 Help Us Improve</h2>
-        <FeedbackForm />
-      </div>
-
-      {/* Methodology / SEO Content */}
-      <details className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-        <summary className="cursor-pointer font-medium text-gray-900">How this calculation works</summary>
-        <div className="mt-4 space-y-3 text-sm text-gray-600">
-          <p><strong>Formula:</strong> (Desired Income + Business Expenses + Benefits) ÷ (1 − Tax Rate) × (1 + Risk Buffer) ÷ Annual Billable Hours</p>
-          <p><strong>Billable hours ≠ 40:</strong> Most freelancers only bill 20–30 hrs/week. The rest is admin, sales, learning, and downtime.</p>
-          <p><strong>Risk buffer (10–20%):</strong> Covers non-billable time, client gaps, scope creep, and rate negotiation room.</p>
-          <p><strong>Employed equivalent:</strong> Adds ~35% for employer payroll tax, benefits, paid leave, and equipment — what a W-2 role would cost.</p>
-        </div>
-      </details>
     </div>
-  );
-}
-
-// Simple feedback form component
-function FeedbackForm() {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const existing = JSON.parse(localStorage.getItem("freelance-feedback") || "[]");
-    existing.push({ name, message, date: new Date().toISOString() });
-    localStorage.setItem("freelance-feedback", JSON.stringify(existing));
-    setSent(true);
-  };
-
-  if (sent) {
-    return <p className="text-green-600 font-medium text-sm">Thank you for your feedback! 🙏</p>;
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-3">
-      <input
-        type="text"
-        placeholder="Your name (optional)"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-      />
-      <textarea
-        placeholder="How can we make this calculator better? Any features you'd like?"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        required
-        rows={3}
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-      />
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
-      >
-        Send Feedback 💬
-      </button>
-    </form>
   );
 }

@@ -157,6 +157,21 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-gray-50">
+        {/* Sticky Navigation Header */}
+        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+          <nav className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+            <a href="/" className="flex items-center gap-2 text-gray-900 font-semibold text-sm hover:text-blue-700 transition-colors">
+              <span className="flex items-center justify-center w-7 h-7 bg-blue-600 text-white rounded-lg text-xs font-bold">FC</span>
+              <span className="hidden sm:inline">Freelance Calculator</span>
+            </a>
+            <div className="flex items-center gap-1 text-sm">
+              <a href="/" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Calculator</a>
+              <a href="/blog" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Blog</a>
+              <a href="/resources" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Resources</a>
+              <a href="/about" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">About</a>
+            </div>
+          </nav>
+        </header>
         {children}
         <Analytics />
         <SpeedInsights />
