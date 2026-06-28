@@ -20,12 +20,28 @@ export default function Post() {
   return (
     <>
       <Script id="article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: "Freelance Pricing Strategies: Hourly vs Value-Based vs Project-Based", description: "Which pricing model earns you the most? A comprehensive guide.", datePublished: "2026-06-28", dateModified: "2026-06-28", author: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" }, publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" } }) }} />
-      <main className="min-h-screen bg-gray-50 py-12 px-4">
-        <article className="max-w-3xl mx-auto prose prose-gray lg:prose-lg">
-          <p className="text-sm text-gray-500 mb-2">Published: June 28, 2026 · 11 min read</p>
-          <h1>Freelance Pricing Strategies: Hourly vs Value-Based vs Project-Based</h1>
+      <main>
+        {/* ═══ HERO ═══ */}
+        <header className="bg-gradient-to-br from-purple-600 via-purple-700 to-violet-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">📈</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Pricing</span>
+              <span className="text-xs text-white/60">11 min read</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight" id="top">
+                      Freelance Pricing Strategies: Hourly vs Value-Based vs Project-Based
+                      </h1>
+          </div>
+        </header>
 
-          <p className="lead">A freelancer charging $100/hour might earn $150,000/year. Another charging $100/hour might earn $50,000. Same rate, completely different outcome. The difference isn't the number — it's the <em>pricing model</em>.</p>
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+          <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
+            <p className="lead">A freelancer charging $100/hour might earn $150,000/year. Another charging $100/hour might earn $50,000. Same rate, completely different outcome. The difference isn't the number — it's the <em>pricing model</em>.</p>
 
           <h2>The 4 Pricing Models</h2>
 
@@ -105,10 +121,37 @@ export default function Post() {
           <p>The best pricing strategy is: <strong>start hourly, graduate to project-based, evolve to retainer, and aim for value-based.</strong> Each step up the ladder increases your earning potential while reducing hours worked.</p>
           <p>Your rate is not just a number. It's a reflection of the value you deliver and the lifestyle you're building. Price accordingly.</p>
 
-          <hr className="my-8" />
-          <p className="text-sm text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
+          <hr className="my-8 border-gray-200" />
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
           <p className="text-xs text-gray-400">Last updated: June 28, 2026 · <Link href="/contact" className="text-blue-600">Questions?</Link></p>
-        </article>
+            </div>
+          </article>
+        </div>
+
+        {/* ═══ More Guides ═══ */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+              <Link key="freelancer-vs-employee-cost-comparison-2026" href="/blog/freelancer-vs-employee-cost-comparison-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">⚖️</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Freelancer vs Employee 2026</h4>
+              </Link>
+              <Link key="self-employment-tax-guide-2026" href="/blog/self-employment-tax-guide-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">💰</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Self-Employment Tax 2026</h4>
+              </Link>
+              <Link key="freelance-retainer-rate-calculator-templates" href="/blog/freelance-retainer-rate-calculator-templates" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">📋</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Retainer Rate Guide</h4>
+              </Link>
+          </div>
+          <div className="text-center mt-8">
+            <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+              View All Guides <span>→</span>
+            </a>
+          </div>
+        </section>
       </main>
     </>
   );

@@ -20,11 +20,28 @@ export default function Post() {
   return (
     <>
       <Script id="article-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: "How to Calculate Your Freelance Retainer Rate (With Templates)", description: "Learn how to price retainer agreements so you get recurring income without shortchanging yourself.", datePublished: "2026-06-28", dateModified: "2026-06-28", author: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" }, publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" } }) }} />
-      <main className="min-h-screen bg-gray-50 py-12 px-4">
-        <article className="max-w-3xl mx-auto prose prose-gray lg:prose-lg">
-          <p className="text-sm text-gray-500 mb-2">Published: June 28, 2026 · 9 min read</p>
-          <h1>How to Calculate Your Freelance Retainer Rate (With Templates)</h1>
-          <p className="lead">Retainers are the holy grail of freelancing: predictable income, less admin, stronger client relationships. But price them wrong and you're stuck in a bad deal for months. Here's exactly how to get it right.</p>
+      <main>
+        {/* ═══ HERO ═══ */}
+        <header className="bg-gradient-to-br from-amber-500 via-amber-600 to-orange-800 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">📋</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Pricing</span>
+              <span className="text-xs text-white/60">9 min read</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight" id="top">
+                      How to Calculate Your Freelance Retainer Rate (With Templates)
+                      </h1>
+          </div>
+        </header>
+
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+          <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
+            <p className="lead">Retainers are the holy grail of freelancing: predictable income, less admin, stronger client relationships. But price them wrong and you're stuck in a bad deal for months. Here's exactly how to get it right.</p>
 
           <h2>What Is a Retainer?</h2>
           <p>A retainer is a monthly agreement where the client pays you a fixed fee for a defined scope of work. You get paid the same amount every month. The client gets priority access and guaranteed availability.</p>
@@ -114,10 +131,37 @@ export default function Post() {
           <p>A good retainer is worth 2–3x what you'd earn from one-off projects from the same client over a year. Less negotiation, less admin, fewer ups and downs. But only if you price it right from day one.</p>
           <p>Start with your minimum viable rate (from the calculator above), apply the retainer formula, add 15% for growth, and never lock in a rate for more than 12 months.</p>
 
-          <hr className="my-8" />
-          <p className="text-sm text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
+          <hr className="my-8 border-gray-200" />
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
           <p className="text-xs text-gray-400">Last updated: June 28, 2026 · <Link href="/contact" className="text-blue-600">Questions?</Link></p>
-        </article>
+            </div>
+          </article>
+        </div>
+
+        {/* ═══ More Guides ═══ */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+              <Link key="freelancer-vs-employee-cost-comparison-2026" href="/blog/freelancer-vs-employee-cost-comparison-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">⚖️</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Freelancer vs Employee 2026</h4>
+              </Link>
+              <Link key="self-employment-tax-guide-2026" href="/blog/self-employment-tax-guide-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">💰</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Self-Employment Tax 2026</h4>
+              </Link>
+              <Link key="freelance-pricing-strategies-value-based" href="/blog/freelance-pricing-strategies-value-based" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">📈</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Pricing Strategies</h4>
+              </Link>
+          </div>
+          <div className="text-center mt-8">
+            <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+              View All Guides <span>→</span>
+            </a>
+          </div>
+        </section>
       </main>
     </>
   );

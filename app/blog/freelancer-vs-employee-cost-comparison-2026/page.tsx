@@ -33,12 +33,28 @@ export default function Post() {
           publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
         }),
       }} />
-      <main className="min-h-screen bg-gray-50 py-12 px-4">
-        <article className="max-w-3xl mx-auto prose prose-gray lg:prose-lg">
-          <p className="text-sm text-gray-500 mb-2">Published: June 28, 2026 · Updated: June 28, 2026 · 10 min read</p>
-          <h1>Freelancer vs Employee: The Complete Financial Comparison (2026)</h1>
+      <main>
+        {/* ═══ HERO ═══ */}
+        <header className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">⚖️</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Comparison</span>
+              <span className="text-xs text-white/60">10 min read</span>
+            </div>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight" id="top">
+                      Freelancer vs Employee: The Complete Financial Comparison (2026)
+                      </h1>
+          </div>
+        </header>
 
-          <p className="lead">You already know freelancers pay more taxes and get no PTO. But <em>how much more?</em> The real gap is $20,000–$50,000 a year for the same lifestyle. Here's the full breakdown with 2026 numbers.</p>
+        <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+          <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
+            <p className="lead">You already know freelancers pay more taxes and get no PTO. But <em>how much more?</em> The real gap is $20,000–$50,000 a year for the same lifestyle. Here's the full breakdown with 2026 numbers.</p>
 
           <h2>The Baseline Comparison</h2>
           <p>Let's compare two people earning the <em>same</em> gross income (say, $80,000) — one as a W-2 employee, one as a 1099 freelancer.</p>
@@ -115,10 +131,37 @@ export default function Post() {
           <p>If you're freelancing, you need to charge <strong>30–50% more</strong> than your salaried hourly equivalent just to break even on lifestyle. Everything above that is real profit.</p>
           <p><strong>Don't set your rate by what an employee earns.</strong> Set it by what your freelance lifestyle costs — then add a margin for growth.</p>
 
-          <hr className="my-8" />
-          <p className="text-sm text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>. Numbers based on 2026 US tax brackets and average market rates. This is educational content, not financial advice.</p>
+          <hr className="my-8 border-gray-200" />
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>. Numbers based on 2026 US tax brackets and average market rates. This is educational content, not financial advice.</p>
           <p className="text-xs text-gray-400">Last updated: June 28, 2026 · <Link href="/contact" className="text-blue-600">Questions?</Link></p>
-        </article>
+            </div>
+          </article>
+        </div>
+
+        {/* ═══ More Guides ═══ */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+              <Link key="self-employment-tax-guide-2026" href="/blog/self-employment-tax-guide-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">💰</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Self-Employment Tax 2026</h4>
+              </Link>
+              <Link key="freelance-pricing-strategies-value-based" href="/blog/freelance-pricing-strategies-value-based" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">📈</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Pricing Strategies</h4>
+              </Link>
+              <Link key="freelance-retainer-rate-calculator-templates" href="/blog/freelance-retainer-rate-calculator-templates" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                <span className="text-lg">📋</span>
+                <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Retainer Rate Guide</h4>
+              </Link>
+          </div>
+          <div className="text-center mt-8">
+            <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+              View All Guides <span>→</span>
+            </a>
+          </div>
+        </section>
       </main>
     </>
   );

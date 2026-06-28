@@ -35,25 +35,25 @@ export default function FreelanceHourlyRateGuide() {
           publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
         }),
       }} />
-      <article className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-3xl mx-auto">
-        <header className="mb-10">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-blue-600 hover:underline mb-6 text-sm"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Blog
-          </Link>
-          <time className="text-gray-500 text-sm mb-4 block">Published January 15, 2024 · Updated June 28, 2026 · 8 min read</time>
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)
-          </h1>
+      <main>
+        <header className="bg-gradient-to-br from-cyan-600 via-cyan-700 to-blue-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">🧮</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Guide</span>
+            </div>
+            <Link href="/blog" className="inline-block text-sm text-white/70 hover:text-white mb-2 underline underline-offset-2">← All Guides</Link>
+                        <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                          Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)
+                        </h1>
+          </div>
         </header>
-
-        <div className="prose prose-lg max-w-none bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+<div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+        <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
           <p className="lead text-xl text-gray-600">
             Most freelancers undercharge by 30-50% because they only think about "take-home pay" and forget taxes, benefits, unpaid time off, and business expenses. This guide walks you through the complete calculation.
           </p>
@@ -70,37 +70,26 @@ export default function FreelanceHourlyRateGuide() {
             <li>Equipment, software, office space provided</li>
             <li>Unemployment insurance, workers' comp</li>
           </ul>
-          <p>To match an $80k employee package, you need ~$130k+ in revenue.</p>
 
           <h2>The Complete Freelance Rate Formula</h2>
-          <p>Your minimum hourly rate = (Target Take-Home + All Costs) ÷ Billable Hours</p>
 
           <h3>1. Target Annual Take-Home Pay</h3>
-          <p>What you want in your personal bank account after taxes. Be realistic — include personal savings goals.</p>
 
           <h3>2. Self-Employment Tax (15.3%)</h3>
-          <p>You pay both employer and employee portions of Social Security (12.4%) and Medicare (2.9%). On $100k net, that's $15,300.</p>
 
           <h3>3. Income Tax (Federal + State)</h3>
-          <p>Effective rate varies 15-35% depending on income and location. Use your prior year's effective rate as a baseline.</p>
 
           <h3>4. Health Insurance</h3>
-          <p>Marketplace plans: $400-1,200/month for individual. Family: $1,200-2,500/month. This is 100% deductible.</p>
 
           <h3>5. Retirement Contributions</h3>
-          <p>Solo 401(k): up to $69,000/year (2024). SEP-IRA: 25% of net earnings. You're now responsible for 100% of this.</p>
 
           <h3>6. Business Expenses</h3>
-          <p>Software ($50-200/mo), equipment, home office, internet, phone, professional development, marketing, accounting, legal, insurance.</p>
 
           <h3>7. Unpaid Time Off (The Hidden Killer)</h3>
-          <p>Employees get 4 weeks paid. You get 0. If you want 4 weeks off, you must earn that money in 48 weeks, not 52.</p>
 
           <h3>8. Non-Billable Time</h3>
-          <p>Admin, sales, marketing, learning, networking. Realistically 15-25 hours/week are billable MAX. Many freelancers only bill 10-15.</p>
 
           <h3>9. Risk Buffer (10-20%)</h3>
-          <p>Client non-payment, scope creep, dry spells, equipment failure, economic downturns. This is your business insurance.</p>
 
           <h2>Use Our Calculator Instead of Spreadsheets</h2>
           <p>
@@ -132,8 +121,9 @@ export default function FreelanceHourlyRateGuide() {
             <li>Read our guide on <Link href="/blog/how-much-to-charge-freelancer-day-rate-vs-hourly" className="text-blue-600 hover:underline font-medium">Day Rate vs Hourly Rate</Link></li>
           </ol>
 
-          <hr className="my-10" />
-
+          <hr className="my-8 border-gray-200" />
+          <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
           <div className="bg-gray-50 rounded-lg p-6">
             <h3 className="text-lg font-semibold mb-3">Ready to Calculate Your Rate?</h3>
             <p className="text-gray-600 mb-4">
@@ -146,14 +136,38 @@ export default function FreelanceHourlyRateGuide() {
               Calculate My Rate →
             </Link>
           </div>
-        </div>
 
         <footer className="mt-10 text-center text-gray-500 text-sm">
           <p>Found this helpful? <Link href="/" className="text-blue-600 hover:underline">Share the calculator</Link> with a fellow freelancer.</p>
         </footer>
-      </div>
-    </article>
-      <p className="text-center text-xs text-gray-400 mt-4">Published January 2024 · Updated June 2026 by FreelanceRateCalculator.com</p>
-    </>
-  );
-}
+        </div>
+        </article>
+        </div>
+
+        {/* More Guides */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+        <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+        <Link key="how-much-to-charge-freelancer-day-rate-vs-hourly" href="/blog/how-much-to-charge-freelancer-day-rate-vs-hourly" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+          <span className="text-lg">⏱️</span>
+          <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Day Rate vs Hourly</h4>
+        </Link>
+        <Link key="freelance-tax-deductions-calculator-write-offs" href="/blog/freelance-tax-deductions-calculator-write-offs" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+          <span className="text-lg">📑</span>
+          <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Tax Deductions Guide</h4>
+        </Link>
+        <Link key="freelancer-vs-employee-cost-comparison-2026" href="/blog/freelancer-vs-employee-cost-comparison-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+          <span className="text-lg">⚖️</span>
+          <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Freelancer vs Employee 2026</h4>
+        </Link>
+        </div>
+        <div className="text-center mt-8">
+        <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+        View All Guides <span>→</span>
+        </a>
+        </div>
+        </section>
+        </main>
+        </>
+        );
+        }

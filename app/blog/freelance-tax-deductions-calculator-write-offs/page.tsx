@@ -35,26 +35,25 @@ export default function FreelanceTaxDeductionsGuide() {
           publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
         }),
       }} />
-      <article className="min-h-screen bg-gray-50 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <header className="mb-10">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 hover:underline mb-6 text-sm"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Blog
-            </Link>
-            <time className="text-gray-500 text-sm mb-4 block">Published January 25, 2024 · Updated June 28, 2026 · 12 min read</time>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-              Freelance Tax Deductions Guide: What You Can Write Off (Updated 2026)
-            </h1>
-            <p className="text-sm text-gray-400 mt-2"><strong>Tax year:</strong> 2026 · Contribution limits reflect current IRS figures.</p>
-          </header>
-
-          <div className="prose prose-lg max-w-none bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+      <main>
+        <header className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">📑</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Taxes</span>
+            </div>
+            <Link href="/blog" className="inline-block text-sm text-white/70 hover:text-white mb-2 underline underline-offset-2">← All Guides</Link>
+                          <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                            Freelance Tax Deductions Guide: What You Can Write Off (Updated 2026)
+                          </h1>
+            </div>
+        </header>
+<div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+        <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
             <p className="lead text-xl text-gray-600">
               The average freelancer overpays taxes by $3,000–$7,000 yearly simply by missing deductions they're legally entitled to. With 2026 tax brackets and limits now in effect, staying current matters more than ever.
             </p>
@@ -88,7 +87,6 @@ export default function FreelanceTaxDeductionsGuide() {
               • Repairs and maintenance<br />
               • Depreciation (if you own)
             </p>
-            <p><strong>Key rule:</strong> Space must be used regularly and exclusively for business.</p>
 
             <h2>Equipment &amp; Software (100% Deductible)</h2>
             <ul>
@@ -97,7 +95,6 @@ export default function FreelanceTaxDeductionsGuide() {
               <li><strong>Peripherals:</strong> Keyboard, mouse, webcam, microphone, speakers, docking station</li>
               <li><strong>Office furniture:</strong> Desk, chair, bookshelves, filing cabinet (if for business)</li>
             </ul>
-            <p><strong>Section 179 (2026):</strong> You can deduct 100% of equipment cost in year purchased (up to $1,220,000 in 2026).</p>
 
             <h2>Health Insurance (100% Deductible)</h2>
             <p>
@@ -105,7 +102,6 @@ export default function FreelanceTaxDeductionsGuide() {
               • Medical, dental, and vision insurance premiums<br />
               • Long-term care insurance (with age-based limits)
             </p>
-            <p>This is an "above-the-line" deduction—you get it whether you itemize or take standard deduction.</p>
 
             <h2>Retirement Contributions (Biggest Savings)</h2>
             <ul>
@@ -114,7 +110,6 @@ export default function FreelanceTaxDeductionsGuide() {
               <li><strong>SIMPLE IRA:</strong> $16,500 limit (2026) + $3,500 catch-up</li>
               <li><strong>Traditional/Roth IRA:</strong> $7,000 limit (2026) + $1,000 catch-up</li>
             </ul>
-            <p><strong>Pro tip:</strong> Solo 401(k) lets you contribute as both employee AND employer, effectively doubling your contribution power.</p>
 
             <h2>Business Expenses (The Long List)</h2>
             <h3>Advertising &amp; Marketing</h3>
@@ -186,8 +181,9 @@ export default function FreelanceTaxDeductionsGuide() {
               </p>
             </div>
 
-            <hr className="my-10" />
-
+            <hr className="my-8 border-gray-200" />
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                      <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-3">Ready to Maximize Your Deductions?</h3>
               <p className="text-gray-600 mb-4">
@@ -197,14 +193,38 @@ export default function FreelanceTaxDeductionsGuide() {
                 Calculate My Rate →
               </Link>
             </div>
-          </div>
 
           <footer className="mt-10 text-center text-gray-500 text-sm">
             <p>Found this helpful? <Link href="/" className="text-blue-600 hover:underline">Share the calculator</Link> with a fellow freelancer.</p>
           </footer>
         </div>
       </article>
-      <p className="text-center text-xs text-gray-400 mt-4">Published January 2024 · Updated June 2026 by FreelanceRateCalculator.com</p>
-    </>
+        </div>
+
+    {/* More Guides */}
+    <section className="max-w-5xl mx-auto px-4 py-12">
+      <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+      <div className="grid gap-4 md:grid-cols-3">
+          <Link key="freelance-hourly-rate-calculator-guide" href="/blog/freelance-hourly-rate-calculator-guide" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">🧮</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Rate Calculator Guide</h4>
+          </Link>
+          <Link key="how-much-to-charge-freelancer-day-rate-vs-hourly" href="/blog/how-much-to-charge-freelancer-day-rate-vs-hourly" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">⏱️</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Day Rate vs Hourly</h4>
+          </Link>
+          <Link key="freelancer-vs-employee-cost-comparison-2026" href="/blog/freelancer-vs-employee-cost-comparison-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">⚖️</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Freelancer vs Employee 2026</h4>
+          </Link>
+      </div>
+      <div className="text-center mt-8">
+        <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+          View All Guides <span>→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </>
   );
 }

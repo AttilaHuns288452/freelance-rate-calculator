@@ -35,25 +35,25 @@ export default function DayRateVsHourlyGuide() {
           publisher: { "@type": "Organization", name: "FreelanceRateCalculator.com", url: "https://freelancecalculator.xyz" },
         }),
       }} />
-      <article className="min-h-screen bg-gray-50 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <header className="mb-10">
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 hover:underline mb-6 text-sm"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Blog
-            </Link>
-            <time className="text-gray-500 text-sm mb-4 block">Published January 20, 2024 · Updated June 28, 2026 · 6 min read</time>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-              Freelance Day Rate vs Hourly: Which Earns You More? (Updated 2026)
-            </h1>
-          </header>
-
-          <div className="prose prose-lg max-w-none bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+      <main>
+        <header className="bg-gradient-to-br from-rose-600 via-rose-700 to-pink-900 text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 relative">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-2xl">⏱️</span>
+              <span className="text-xs font-medium bg-white/20 px-3 py-1 rounded-full">Pricing</span>
+            </div>
+            <Link href="/blog" className="inline-block text-sm text-white/70 hover:text-white mb-2 underline underline-offset-2">← All Guides</Link>
+                          <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                            Freelance Day Rate vs Hourly: Which Earns You More? (Updated 2026)
+                          </h1>
+            </div>
+        </header>
+<div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
+        <article className="prose prose-gray prose-headings:scroll-mt-20 lg:prose-lg max-w-none bg-white rounded-2xl shadow-sm border border-gray-200 p-6 md:p-8">
             <p className="lead text-xl text-gray-600">
               The day rate vs hourly rate debate isn't just semantics—it can mean thousands of dollars difference in your annual income. Let's break down when each model works best.
             </p>
@@ -143,8 +143,9 @@ export default function DayRateVsHourlyGuide() {
               Our <Link href="/" className="text-blue-600 hover:underline font-medium">freelance rate calculator</Link> gives you your true hourly minimum. To get your day rate: multiply that number by 5.5 (not 8!) for a realistic day rate that accounts for non-billable time.
             </p>
 
-            <hr className="my-10" />
-
+            <hr className="my-8 border-gray-200" />
+            <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
+              <p className="text-xs text-gray-500">Published by <strong>FreelanceRateCalculator.com</strong>.</p>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-3">Want to Calculate Both Rates Instantly?</h3>
               <p className="text-gray-600 mb-4">
@@ -154,14 +155,38 @@ export default function DayRateVsHourlyGuide() {
                 Calculate My Rates →
               </Link>
             </div>
-          </div>
 
           <footer className="mt-10 text-center text-gray-500 text-sm">
             <p>Found this helpful? <Link href="/" className="text-blue-600 hover:underline">Share the calculator</Link> with a fellow freelancer.</p>
           </footer>
         </div>
       </article>
-      <p className="text-center text-xs text-gray-400 mt-4">Published January 2024 · Updated June 2026 by FreelanceRateCalculator.com</p>
-    </>
+        </div>
+
+    {/* More Guides */}
+    <section className="max-w-5xl mx-auto px-4 py-12">
+      <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">More Freelance Guides</h2>
+      <div className="grid gap-4 md:grid-cols-3">
+          <Link key="freelance-hourly-rate-calculator-guide" href="/blog/freelance-hourly-rate-calculator-guide" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">🧮</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Rate Calculator Guide</h4>
+          </Link>
+          <Link key="freelance-tax-deductions-calculator-write-offs" href="/blog/freelance-tax-deductions-calculator-write-offs" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">📑</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Tax Deductions Guide</h4>
+          </Link>
+          <Link key="freelancer-vs-employee-cost-comparison-2026" href="/blog/freelancer-vs-employee-cost-comparison-2026" className="group relative block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <span className="text-lg">⚖️</span>
+            <h4 className="font-semibold text-gray-900 text-sm mt-1 group-hover:text-blue-700 transition-colors">Freelancer vs Employee 2026</h4>
+          </Link>
+      </div>
+      <div className="text-center mt-8">
+        <a href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+          View All Guides <span>→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </>
   );
 }
