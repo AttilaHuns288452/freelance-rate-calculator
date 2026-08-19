@@ -1,4 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
-  <rect width="180" height="180" rx="36" fill="#5e6ad2"/>
-  <text x="90" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="78" fill="white" letter-spacing="-1.5">FC</text>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5e6ad2"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="42" fill="url(#g)"/>
+  <g transform="translate(90,88)">
+    <rect x="-38" y="-42" width="76" height="102" rx="14" fill="none" stroke="white" stroke-width="5.5" opacity="0.95"/>
+    <rect x="-30" y="-34" width="60" height="26" rx="7" fill="white" opacity="0.96"/>
+    <text x="0" y="-16" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="16" fill="#312e81">$</text>
+    <circle cx="-14" cy="8" r="7" fill="white" opacity="0.95"/>
+    <circle cx="10" cy="8" r="7" fill="white" opacity="0.95"/>
+    <circle cx="34" cy="8" r="7" fill="white" opacity="0.95"/>
+    <circle cx="-14" cy="28" r="7" fill="white" opacity="0.95"/>
+    <circle cx="10" cy="28" r="7" fill="white" opacity="0.95"/>
+    <circle cx="34" cy="28" r="7" fill="white" opacity="0.75"/>
+    <circle cx="-14" cy="48" r="7" fill="white" opacity="0.60"/>
+    <circle cx="10" cy="48" r="7" fill="white" opacity="0.60"/>
+    <circle cx="34" cy="48" r="7" fill="white" opacity="0.98"/>
+  </g>
 </svg>

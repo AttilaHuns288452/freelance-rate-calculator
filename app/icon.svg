@@ -1,4 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#5e6ad2"/>
-  <text x="16" y="19" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="13" fill="white" letter-spacing="-0.5">FC</text>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5e6ad2"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#g)"/>
+  <!-- calculator shape -->
+  <rect x="9" y="6" width="14" height="20" rx="3.5" fill="none" stroke="white" stroke-width="1.4" opacity="0.95"/>
+  <rect x="11.5" y="8.2" width="9" height="5" rx="1.5" fill="white" opacity="0.92"/>
+  <text x="16" y="12.1" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="4.2" fill="#312e81">$</text>
+  <circle cx="13" cy="17.2" r="1.35" fill="white" opacity="0.9"/>
+  <circle cx="16" cy="17.2" r="1.35" fill="white" opacity="0.9"/>
+  <circle cx="19" cy="17.2" r="1.35" fill="white" opacity="0.9"/>
+  <circle cx="13" cy="20.1" r="1.35" fill="white" opacity="0.9"/>
+  <circle cx="16" cy="20.1" r="1.35" fill="white" opacity="0.9"/>
+  <circle cx="19" cy="20.1" r="1.35" fill="white" opacity="0.7"/>
+  <circle cx="13" cy="23" r="1.35" fill="white" opacity="0.55"/>
+  <circle cx="16" cy="23" r="1.35" fill="white" opacity="0.55"/>
+  <circle cx="19" cy="23" r="1.35" fill="white" opacity="0.95"/>
 </svg>
