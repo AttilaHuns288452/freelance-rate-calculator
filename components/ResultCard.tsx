@@ -1,72 +1,213 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { CalculatorResults } from "@/lib/calculations";
 
 interface ResultCardProps {
   results: CalculatorResults;
   formatCurrency: (amount: number) => string;
   formatRate: (rate: number) => string;
+  inputs: { desiredAnnualIncome: number; billableHoursPerWeek: number; weeksWorkedPerYear: number; annualTaxRate: number; riskBufferPercent: number };
 }
 
-export default function ResultCard({ results, formatCurrency, formatRate }: ResultCardProps) {
+function useCountUp(target: number, duration = 650) {
+  const [val, setVal] = useState(target);
+  useEffect(() => {
+    const start = val;
+    const diff = target - start;
+    if (diff === 0) return;
+    const steps = Math.max(12, Math.min(30, Math.abs(diff) < 20 ? 12 : 22));
+    let i = 0;
+    const id = setInterval(() => {
+      i++;
+      const p = i / steps;
+      const eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(start + diff * eased));
+      if (i >= steps) { setVal(target); clearInterval(id); }
+    }, duration / steps);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target]);
+  return val;
+}
+
+export default function ResultCard({ results, formatCurrency, formatRate, inputs }: ResultCardProps) {
+  const annualHours = inputs.billableHoursPerWeek * inputs.weeksWorkedPerYear;
+  const totalHoursYear = 52 * 40;
+  const billPct = annualHours > 0 ? Math.min(100, Math.round((annualHours / totalHoursYear) * 100)) : 0;
+  const animatedRate = useCountUp(results.targetHourlyRate);
+  const [copiedProposal, setCopiedProposal] = useState(false);
+  const [shared, setShared] = useState(false);
+
+  const hasZeroIncome = inputs.desiredAnnualIncome <= 0;
+  const deltaPct = hasZeroIncome ? 0 : Math.round(((results.totalAnnualCosts - inputs.desiredAnnualIncome) / inputs.desiredAnnualIncome) * 100);
+  const vsSalaryPct = hasZeroIncome ? 0 : Math.round(((results.employedEquivalentSalary - inputs.desiredAnnualIncome) / inputs.desiredAnnualIncome) * 100);
+
+  const proposal = `To earn ${formatCurrency(inputs.desiredAnnualIncome)}/yr working ${inputs.billableHoursPerWeek} billable hrs/wk (${inputs.weeksWorkedPerYear} wks/yr), charge ${formatRate(results.targetHourlyRate)} — that's ${formatCurrency(results.dayRate)}/day, ${formatCurrency(results.weeklyRate)}/wk, ${formatCurrency(results.monthlyRetainer)}/mo.`;
+
+  const copyProposal = async () => {
+    await navigator.clipboard.writeText(proposal);
+    setCopiedProposal(true); setTimeout(() => setCopiedProposal(false), 1800);
+  };
+  const shareProposal = async () => {
+    const url = window.location.href;
+    const text = proposal;
+    // Web Share API
+    if (navigator.share) {
+      try { await navigator.share({ title: "My freelance rate", text, url }); setShared(true); setTimeout(() => setShared(false), 1800); return; } catch {}
+    }
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    setShared(true); setTimeout(() => setShared(false), 1800);
+  };
+
+  // stacked bar segments: take-home, taxes, benefits+expenses, buffer
+  const total = Math.max(1, results.totalAnnualCosts);
+  const takeHome = inputs.desiredAnnualIncome;
+  const taxes = results.annualTaxes;
+  const benefits = results.annualBenefits;
+  const expenses = results.annualBusinessExpenses;
+  // buffer = total - grossNeeded, grossNeeded = total / (1+buffer%)
+  const grossNeeded = total / (1 + inputs.riskBufferPercent / 100);
+  const bufferAmt = Math.round(total - grossNeeded);
+  const seg = [
+    { label: "Take-home", value: takeHome, color: "bg-blue-600", text: "text-white" },
+    { label: "Taxes", value: taxes, color: "bg-amber-500", text: "text-white" },
+    { label: "Benefits", value: benefits, color: "bg-emerald-500", text: "text-white" },
+    { label: "Expenses", value: expenses, color: "bg-violet-500", text: "text-white" },
+    { label: "Buffer", value: bufferAmt, color: "bg-rose-500", text: "text-white" },
+  ].filter(s => s.value > 0);
+
+  if (hasZeroIncome) {
+    return (
+      <div className="card p-8 text-center">
+        <p className="text-3xl mb-3">👋</p>
+        <p className="font-semibold text-gray-900">Set your target income to see your rate</p>
+        <p className="text-sm text-gray-500 mt-1">Enter how much you want to take home — we&apos;ll handle taxes, benefits, and buffer.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6">
-      {/* Primary Rate - Hero */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white shadow-lg">
-        <div className="text-center">
-          <p className="text-blue-100 text-sm uppercase tracking-wide mb-1">Your Target Hourly Rate</p>
-          <p className="text-5xl md:text-6xl font-bold">{formatRate(results.targetHourlyRate)}</p>
-          <p className="mt-2 text-blue-200 text-base">
-            That's {formatCurrency(results.targetHourlyRate * 8)} per day · {formatCurrency(results.targetHourlyRate * 40)} per week
+    <div className="space-y-4 print:space-y-3">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden print:bg-white print:text-gray-900 print:border print:shadow-none">
+        <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl print:hidden" />
+        <div className="absolute inset-0 opacity-[0.07] print:hidden" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "22px 22px" }} />
+        <div className="relative text-center">
+          <p className="text-blue-100 print:text-gray-500 text-[11px] uppercase tracking-[0.18em] font-semibold mb-2">Your target rate</p>
+          <p className="text-5xl md:text-6xl font-extrabold tracking-tight tabular-nums">{formatCurrency(animatedRate)}/hr</p>
+          <p className="mt-2.5 text-blue-100 print:text-gray-600 text-sm">
+            Minimum viable: <span className="font-semibold text-white print:text-gray-900">{formatRate(results.minimumHourlyRate)}</span>
+            <span className="mx-2 opacity-50">·</span>
+            W-2 equivalent: <span className="font-semibold text-white print:text-gray-900">{formatCurrency(results.employedEquivalentSalary)}/yr</span>
           </p>
-          <p className="mt-1 text-blue-200/70 text-sm">
-            Minimum viable: {formatRate(results.minimumHourlyRate)} · 
-            Equivalent W-2 salary: {formatCurrency(results.employedEquivalentSalary)}/yr
-          </p>
+          {deltaPct > 0 && (
+            <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-white/15 backdrop-blur border border-white/20 print:bg-amber-50 print:text-amber-800 print:border-amber-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-300 print:bg-amber-500" /> You need <span className="font-bold">+{deltaPct}%</span> over salary to cover real costs
+            </p>
+          )}
+        </div>
+        {/* Pill chips */}
+        <div className="relative mt-6 grid grid-cols-3 gap-2 text-center">
+          {[
+            { label: "Per day (8h)", value: formatCurrency(results.dayRate) },
+            { label: "Per week", value: formatCurrency(results.weeklyRate) },
+            { label: "Per month", value: formatCurrency(results.monthlyRetainer) },
+          ].map(({ label, value }) => (
+            <div key={label} className="bg-white/15 backdrop-blur rounded-2xl py-3.5 border border-white/15 print:bg-gray-50 print:border-gray-200">
+              <p className="text-[10px] uppercase tracking-widest text-blue-100 print:text-gray-500 font-semibold">{label}</p>
+              <p className="text-[15px] font-bold text-white print:text-gray-900 mt-0.5">{value}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Rate Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { label: "Day Rate (8hrs)", value: results.dayRate, format: formatCurrency },
-          { label: "Weekly Rate", value: results.weeklyRate, format: formatCurrency },
-          { label: "Monthly Retainer", value: results.monthlyRetainer, format: formatCurrency },
-          { label: "Annual Gross Needed", value: results.totalAnnualCosts, format: formatCurrency },
-        ].map(({ label, value, format }) => (
-          <div key={label} className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
-            <p className="text-sm text-gray-500 mb-1">{label}</p>
-            <p className="text-2xl font-bold text-gray-900">{format(value)}</p>
+      {/* Billable hours bar */}
+      <div className="card p-4">
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <p className="text-sm font-semibold text-gray-900">Billable time</p>
+          <p className="text-xs font-medium px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">{billPct}% of a 40h week year</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-700" style={{ width: `${billPct}%` }} />
           </div>
-        ))}
+          <span className="text-xs font-bold text-gray-700 tabular-nums w-10 text-right">{billPct}%</span>
+        </div>
+        <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-gray-500">
+          <span className="px-2 py-1 bg-gray-50 rounded-full border border-gray-100">{annualHours.toLocaleString()}h / yr</span>
+          <span className="px-2 py-1 bg-amber-50 rounded-full border border-amber-100 text-amber-800">{52 - inputs.weeksWorkedPerYear} wks off</span>
+          <span className="px-2 py-1 bg-gray-50 rounded-full border border-gray-100">{40 - inputs.billableHoursPerWeek}h/wk non-billable</span>
+        </div>
       </div>
 
-      {/* Cost Breakdown */}
-      <details className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-        <summary className="cursor-pointer font-medium text-gray-900 flex items-center justify-between">
-          Annual Cost Breakdown
-          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+      {/* Employee vs Freelancer */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="card p-5">
+          <p className="text-[11px] uppercase tracking-widest text-gray-400 font-semibold">Employee equivalent</p>
+          <p className="text-2xl font-bold text-gray-900 mt-1 tabular-nums">{formatCurrency(results.employedEquivalentSalary)}/yr</p>
+          <p className="text-xs text-gray-500 mt-1">What an employer would pay with payroll tax + benefits (~35%).</p>
+          {vsSalaryPct > 0 && <p className="mt-2 text-xs font-medium text-gray-700">≈ +{vsSalaryPct}% over your take-home</p>}
+          <ul className="mt-3 space-y-1 text-xs text-gray-600">
+            <li>• Employer payroll tax ~7.65%</li>
+            <li>• Benefits & insurance ~20–30%</li>
+            <li>• Paid leave, equipment, overhead</li>
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-5 shadow-sm">
+          <p className="text-[11px] uppercase tracking-widest text-blue-700 font-semibold">Your freelance rate</p>
+          <p className="text-2xl font-bold text-blue-900 mt-1 tabular-nums">{formatRate(results.targetHourlyRate)}</p>
+          <p className="text-xs text-blue-700/70 mt-1">Covers taxes, benefits, expenses & risk — nothing hidden.</p>
+          <ul className="mt-3 space-y-1 text-xs text-blue-900/80">
+            <li>• Taxes: {formatCurrency(results.annualTaxes)}/yr</li>
+            <li>• Benefits: {formatCurrency(results.annualBenefits)}/yr</li>
+            <li>• Expenses: {formatCurrency(results.annualBusinessExpenses)}/yr</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Proposal */}
+      <div className="card p-5">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <p className="text-sm font-semibold text-gray-900">Client proposal preview</p>
+          <div className="flex gap-1.5">
+            <button onClick={copyProposal} className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-full hover:bg-black transition-colors font-medium">
+              {copiedProposal ? "Copied!" : "Copy"}
+            </button>
+            <button onClick={shareProposal} className="text-xs px-3 py-1.5 bg-white border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 transition-colors font-medium">
+              {shared ? "Shared!" : "Share"}
+            </button>
+          </div>
+        </div>
+        <p className="text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-3.5 border border-gray-100">{proposal}</p>
+        <p className="text-[11px] text-gray-400 mt-2">Paste into proposals, invoices, or rate sheets. Link shares your exact inputs via URL.</p>
+      </div>
+
+      {/* Cost breakdown — stacked bar + legend */}
+      <details className="card p-5 group open:shadow-md transition-shadow" open>
+        <summary className="cursor-pointer font-semibold text-gray-900 flex items-center justify-between list-none select-none">
+          Annual cost breakdown
+          <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
         </summary>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-          <div className="space-y-2 p-3 bg-gray-50 rounded-lg">
-            <p className="text-gray-500">Business Expenses</p>
-            <p className="font-semibold text-gray-900">{formatCurrency(results.annualBusinessExpenses)}</p>
-          </div>
-          <div className="space-y-2 p-3 bg-gray-50 rounded-lg">
-            <p className="text-gray-500">Estimated Taxes</p>
-            <p className="font-semibold text-gray-900">{formatCurrency(results.annualTaxes)}</p>
-          </div>
-          <div className="space-y-2 p-3 bg-gray-50 rounded-lg">
-            <p className="text-gray-500">Benefits (Health + Retirement)</p>
-            <p className="font-semibold text-gray-900">{formatCurrency(results.annualBenefits)}</p>
-          </div>
+        {/* Stacked bar */}
+        <div className="mt-4 h-4 w-full rounded-full overflow-hidden flex bg-gray-100 border border-gray-200">
+          {seg.map((s) => (
+            <div key={s.label} className={`${s.color} h-full transition-all`} style={{ width: `${(s.value / total) * 100}%` }} title={`${s.label}: ${formatCurrency(s.value)}`} />
+          ))}
         </div>
-        <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between font-semibold">
-          <span>Total Annual Cost</span>
-          <span>{formatCurrency(results.totalAnnualCosts)}</span>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {seg.map((s) => (
+            <span key={s.label} className="inline-flex items-center gap-1.5 text-xs">
+              <span className={`w-2.5 h-2.5 rounded-full ${s.color}`} /> <span className="text-gray-600">{s.label}</span> <span className="font-semibold text-gray-900">{formatCurrency(s.value)}</span> <span className="text-gray-400">({Math.round((s.value / total) * 100)}%)</span>
+            </span>
+          ))}
         </div>
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Business expenses</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBusinessExpenses)}</p></div>
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Estimated taxes</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualTaxes)}</p></div>
+          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Benefits (health + retirement)</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBenefits)}</p></div>
+        </div>
+        <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between font-bold text-gray-900"><span>Total needed (with buffer)</span><span className="tabular-nums">{formatCurrency(results.totalAnnualCosts)}</span></div>
       </details>
     </div>
   );

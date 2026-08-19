@@ -1,32 +1,25 @@
 export interface CalculatorInputs {
-  // Core inputs
-  desiredAnnualIncome: number;      // What they want to take home
-  billableHoursPerWeek: number;     // Realistic billable hours (not 40)
-  weeksWorkedPerYear: number;       // Account for vacation, sick, bench time
-  // Expenses
-  monthlyBusinessExpenses: number;  // Software, insurance, marketing, etc.
-  annualTaxRate: number;            // Effective tax rate (e.g., 0.3 for 30%)
-  // Benefits to self-fund
+  desiredAnnualIncome: number;
+  billableHoursPerWeek: number;
+  weeksWorkedPerYear: number;
+  monthlyBusinessExpenses: number;
+  annualTaxRate: number;
   healthInsuranceMonthly: number;
   retirementContributionMonthly: number;
-  // Buffer
-  riskBufferPercent: number;        // 10-20% for non-billable admin, client loss
+  riskBufferPercent: number;
 }
 
 export interface CalculatorResults {
-  // Hourly rates
-  minimumHourlyRate: number;        // Bare minimum to cover costs
-  targetHourlyRate: number;         // Includes desired income
-  dayRate: number;                  // 8-hour day
-  weeklyRate: number;               // 5-day week
-  monthlyRetainer: number;          // 4-week month
-  // Breakdown
+  minimumHourlyRate: number;
+  targetHourlyRate: number;
+  dayRate: number;
+  weeklyRate: number;
+  monthlyRetainer: number;
   annualBusinessExpenses: number;
   annualTaxes: number;
   annualBenefits: number;
   totalAnnualCosts: number;
-  // Comparisons
-  employedEquivalentSalary: number; // What W-2 salary equals this rate
+  employedEquivalentSalary: number;
 }
 
 export function calculateFreelanceRate(inputs: CalculatorInputs): CalculatorResults {
@@ -41,32 +34,17 @@ export function calculateFreelanceRate(inputs: CalculatorInputs): CalculatorResu
     riskBufferPercent,
   } = inputs;
 
-  // Annualize expenses
   const annualBusinessExpenses = monthlyBusinessExpenses * 12;
   const annualBenefits = (healthInsuranceMonthly + retirementContributionMonthly) * 12;
-
-  // Total annual costs before taxes
   const preTaxAnnualNeeded = desiredAnnualIncome + annualBusinessExpenses + annualBenefits;
-
-  // Gross up for taxes: if you keep (1 - taxRate), you need preTax / (1 - taxRate)
   const grossAnnualNeeded = preTaxAnnualNeeded / (1 - annualTaxRate);
-
-  // Apply risk buffer
   const bufferedAnnualNeeded = grossAnnualNeeded * (1 + riskBufferPercent / 100);
-
-  // Annual billable hours
   const annualBillableHours = billableHoursPerWeek * weeksWorkedPerYear;
-
-  // Rates
   const targetHourlyRate = bufferedAnnualNeeded / annualBillableHours;
   const minimumHourlyRate = (annualBusinessExpenses + annualBenefits) / (1 - annualTaxRate) / annualBillableHours;
-
-  // Derived rates
   const dayRate = targetHourlyRate * 8;
   const weeklyRate = targetHourlyRate * billableHoursPerWeek;
   const monthlyRetainer = weeklyRate * 4.33;
-
-  // Employed equivalent (add back employer-side costs: payroll tax ~7.65%, benefits ~30%)
   const employedEquivalentSalary = bufferedAnnualNeeded * 1.35;
 
   return {
@@ -83,7 +61,6 @@ export function calculateFreelanceRate(inputs: CalculatorInputs): CalculatorResu
   };
 }
 
-// Presets for common scenarios
 export const PRESETS: Record<string, Partial<CalculatorInputs>> = {
   "us-web-dev": {
     desiredAnnualIncome: 120000,
@@ -124,6 +101,26 @@ export const PRESETS: Record<string, Partial<CalculatorInputs>> = {
     healthInsuranceMonthly: 0,
     retirementContributionMonthly: 100,
     riskBufferPercent: 10,
+  },
+  "eu-freelancer": {
+    desiredAnnualIncome: 75000,
+    billableHoursPerWeek: 28,
+    weeksWorkedPerYear: 45,
+    monthlyBusinessExpenses: 350,
+    annualTaxRate: 0.30,
+    healthInsuranceMonthly: 200,
+    retirementContributionMonthly: 600,
+    riskBufferPercent: 12,
+  },
+  "agency-owner": {
+    desiredAnnualIncome: 180000,
+    billableHoursPerWeek: 20,
+    weeksWorkedPerYear: 46,
+    monthlyBusinessExpenses: 1200,
+    annualTaxRate: 0.32,
+    healthInsuranceMonthly: 800,
+    retirementContributionMonthly: 1500,
+    riskBufferPercent: 20,
   },
 };
 
