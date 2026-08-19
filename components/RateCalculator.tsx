@@ -65,12 +65,12 @@ function HelpIcon({ help, tip }: { help: string; tip?: string }) {
   return (
     <span className="relative inline-block">
       <button type="button" onClick={() => setOpen((v) => !v)} onBlur={() => setTimeout(() => setOpen(false), 180)}
-        className="inline-flex items-center justify-center w-4 h-4 ml-1.5 text-gray-400 hover:text-blue-600 focus:outline-none transition-colors" aria-label="Help">
+        className="inline-flex items-center justify-center w-4 h-4 ml-1.5 text-gray-400 hover:text-[#5e6ad2] focus:outline-none transition-colors" aria-label="Help">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.529 9.988a2.502 2.502 0 115.191.237C14.43 12.45 12.5 13.5 12.5 15m0 2.5h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       </button>
       {open && (
         <div className="absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 w-72 p-3 bg-gray-900 text-white text-xs rounded-xl shadow-xl leading-relaxed">
-          <p>{help}</p>{tip && <p className="mt-2 text-blue-300">{tip}</p>}
+          <p>{help}</p>{tip && <p className="mt-2 text-[#a5b4fc]">{tip}</p>}
           <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
         </div>
       )}
@@ -85,7 +85,7 @@ function fieldDisplayValue(f: FieldMeta, v: number): string {
 function sliderFill(f: FieldMeta, disp: number) {
   const min = f.min, max = f.max ?? 100;
   const pct = Math.max(0, Math.min(100, ((disp - min) / (max - min)) * 100));
-  return `linear-gradient(to right, #2563eb 0%, #3b82f6 ${pct}%, #e5e7eb ${pct}%, #e5e7eb 100%)`;
+  return `linear-gradient(to right, #5e6ad2 0%, #818cf8 ${pct}%, #eef2ff ${pct}%, #eef2ff 100%)`;
 }
 
 export default function RateCalculator() {
@@ -218,9 +218,9 @@ export default function RateCalculator() {
     const shake = shakeKey === f.key;
     const dispNum = f.isPercent && f.key === "annualTaxRate" ? Math.round(v * 100) : v;
     return (
-      <div key={f.key} className={`group rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition-all ${shake ? "animate-shake border-red-300" : "border-gray-200"}`}>
+      <div key={f.key} className={`group rounded-xl border bg-white p-4 shadow-sm hover:shadow-md transition-all ${shake ? "animate-shake border-red-300" : "border-[#eef2ff]"}`}>
         <label htmlFor={f.key} className="flex items-center text-[13px] font-semibold text-gray-800">
-          <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-gray-50 border border-gray-200 text-[13px] mr-2">{f.icon}</span>
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#f8f9ff] border border-[#eef2ff] text-[13px] mr-2">{f.icon}</span>
           {f.label} <HelpIcon help={f.help} tip={f.tip} />
           {isWeeks && <span className="ml-auto text-xs font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">{weeksOff} wks off</span>}
           {isBillable && annualHours === 0 && <span className="ml-auto text-xs font-medium text-red-600">Required</span>}
@@ -237,7 +237,7 @@ export default function RateCalculator() {
             max={f.max}
             step={f.step}
             aria-label={f.label}
-            className="w-full px-3.5 py-2.5 pr-12 border border-gray-200 rounded-xl text-[15px] font-medium text-gray-900 bg-gray-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            className="w-full px-3.5 py-2.5 pr-12 border border-[#eef2ff] rounded-xl text-[15px] font-medium text-gray-900 bg-[#f8f9ff]/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5e6ad2] focus:border-[#5e6ad2] transition-colors"
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium pointer-events-none">{f.isPercent ? "%" : f.suffix}</span>
         </div>
@@ -268,11 +268,11 @@ export default function RateCalculator() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Lifestyle preview */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <p className="inline-flex flex-wrap items-center gap-2 text-sm bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
+        <p className="inline-flex flex-wrap items-center gap-2 text-sm bg-white border border-[#eef2ff] rounded-full px-4 py-2 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="font-medium text-gray-900">Work {inputs.billableHoursPerWeek}h/wk · {weeksOff} wks off</span>
           <span className="text-gray-400">→</span>
-          <span className="font-bold text-blue-700">{annualHours.toLocaleString()} billable hrs/yr</span>
+          <span className="font-bold text-[#4338ca]">{annualHours.toLocaleString()} billable hrs/yr</span>
           {inputs.desiredAnnualIncome > 0 && annualHours > 0 && (
             <span className="text-gray-500 hidden sm:inline">· {formatCurrency(Math.round(inputs.desiredAnnualIncome / annualHours))}/hr take-home</span>
           )}
@@ -292,13 +292,13 @@ export default function RateCalculator() {
               key={k}
               onClick={() => handlePreset(k)}
               aria-pressed={activePreset === k}
-              className={`px-3.5 py-2 rounded-full text-sm font-medium border transition-all ${activePreset === k ? "bg-blue-600 text-white border-blue-600 shadow-md ring-2 ring-blue-200" : "bg-white text-gray-700 border-gray-200 hover:border-blue-300 hover:bg-blue-50"}`}
+              className={`px-3.5 py-2 rounded-full text-sm font-medium border transition-all ${activePreset === k ? "bg-[#5e6ad2] text-white border-[#5e6ad2] shadow-md ring-2 ring-[#c7d2fe]" : "bg-white text-gray-700 border-[#eef2ff] hover:border-[#a5b4fc] hover:bg-[#eef2ff]"}`}
             >
               {label} {desc && activePreset !== k && <span className="text-gray-400 font-normal hidden md:inline">· {desc}</span>}
             </button>
           ))}
         </div>
-        {activePreset !== "custom" && <p className="mt-2 text-xs text-blue-600">✓ {PRESET_LABELS[activePreset]?.label} active — tweak any field to customize</p>}
+        {activePreset !== "custom" && <p className="mt-2 text-xs text-[#5e6ad2]">✓ {PRESET_LABELS[activePreset]?.label} active — tweak any field to customize</p>}
       </div>
 
       {/* Main 2-col */}
@@ -307,8 +307,8 @@ export default function RateCalculator() {
         <div className="space-y-6 min-w-0">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1 h-5 rounded-full bg-blue-600" />
-              <h2 className="text-xs font-bold tracking-[0.14em] uppercase text-blue-700">Your Lifestyle</h2>
+              <span className="w-1 h-5 rounded-full bg-[#5e6ad2]" />
+              <h2 className="text-xs font-bold tracking-[0.14em] uppercase text-[#4338ca]">Your Lifestyle</h2>
               <span className="text-xs text-gray-400">Income · Time · Freedom</span>
             </div>
             <div className="grid gap-3">{lifestyle.map(fieldCard)}</div>
@@ -326,7 +326,7 @@ export default function RateCalculator() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
               {copied === "link" ? "Link copied!" : "Copy share link"}
             </button>
-            <button onClick={() => window.print()} className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 text-gray-700 text-sm font-medium rounded-full hover:border-gray-300 hover:bg-gray-50 transition-colors">
+            <button onClick={() => window.print()} className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-[#eef2ff] text-gray-700 text-sm font-medium rounded-full hover:border-gray-300 hover:bg-[#f8f9ff] transition-colors">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
               Save as PDF
             </button>
@@ -342,8 +342,8 @@ export default function RateCalculator() {
           <div className="card p-4">
             <p className="text-xs text-gray-400 text-center mb-2">Keep exploring</p>
             <div className="flex flex-wrap justify-center gap-2">
-              <a href="/blog/freelance-hourly-rate-calculator-guide" className="text-xs px-3 py-1.5 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors">Rate Guide →</a>
-              <a href="/blog/freelancer-vs-employee-cost-comparison-2026" className="text-xs px-3 py-1.5 bg-gray-50 text-gray-700 rounded-full hover:bg-gray-100 transition-colors">W-2 vs 1099 →</a>
+              <a href="/blog/freelance-hourly-rate-calculator-guide" className="text-xs px-3 py-1.5 bg-[#eef2ff] text-[#4338ca] rounded-full hover:bg-[#c7d2fe] transition-colors">Rate Guide →</a>
+              <a href="/blog/freelancer-vs-employee-cost-comparison-2026" className="text-xs px-3 py-1.5 bg-[#f8f9ff] text-gray-700 rounded-full hover:bg-gray-100 transition-colors">W-2 vs 1099 →</a>
             </div>
           </div>
         </div>

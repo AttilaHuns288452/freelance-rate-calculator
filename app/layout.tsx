@@ -7,7 +7,7 @@ import Script from "next/script";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#1d4ed8",
+  themeColor: "#5e6ad2",
 };
 
 const geistSans = Geist({
@@ -137,18 +137,19 @@ export default function RootLayout({
           })}}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-gray-50">
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 print:hidden">
-          <nav className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2 text-gray-900 font-semibold text-sm hover:text-blue-700 transition-colors">
-              <span className="flex items-center justify-center w-7 h-7 bg-blue-600 text-white rounded-lg text-xs font-bold">FC</span>
-              <span className="hidden sm:inline">Freelance Calculator</span>
+      <body className="min-h-full flex flex-col bg-[#f8f9ff]">
+        <header className="sticky top-0 z-50 glass-nav print:hidden">
+          <nav className="max-w-6xl mx-auto px-4 h-[60px] flex items-center justify-between">
+            <a href="/" className="flex items-center gap-2.5 text-[#0f1229] font-semibold text-sm hover:text-[#5e6ad2] transition-colors">
+              <span className="flex items-center justify-center w-8 h-8 bg-[#5e6ad2] text-white rounded-xl text-xs font-bold shadow-sm shadow-[#5e6ad2]/20">FC</span>
+              <span className="hidden sm:inline tracking-tight">Freelance Calculator</span>
             </a>
             <div className="flex items-center gap-1 text-sm">
-              <a href="/" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Calculator</a>
-              <a href="/blog" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Blog</a>
-              <a href="/resources" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">Resources</a>
-              <a href="/about" className="px-3 py-1.5 text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors">About</a>
+              <a href="/" className="px-3 py-1.5 text-gray-500 hover:text-[#5e6ad2] hover:bg-[#eef2ff] rounded-full transition-colors font-medium">Calculator</a>
+              <a href="/blog" className="px-3 py-1.5 text-gray-500 hover:text-[#5e6ad2] hover:bg-[#eef2ff] rounded-full transition-colors font-medium">Blog</a>
+              <a href="/resources" className="px-3 py-1.5 text-gray-500 hover:text-[#5e6ad2] hover:bg-[#eef2ff] rounded-full transition-colors font-medium">Resources</a>
+              <a href="/about" className="hidden sm:inline-flex px-3 py-1.5 text-gray-500 hover:text-[#5e6ad2] hover:bg-[#eef2ff] rounded-full transition-colors font-medium">About</a>
+              <a href="#calculator" className="ml-1 hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-[#0f1229] text-white text-xs font-semibold rounded-full hover:bg-black transition-colors shadow-sm">Try it →</a>
             </div>
           </nav>
         </header>

@@ -70,7 +70,7 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
   const grossNeeded = total / (1 + inputs.riskBufferPercent / 100);
   const bufferAmt = Math.round(total - grossNeeded);
   const seg = [
-    { label: "Take-home", value: takeHome, color: "bg-blue-600", text: "text-white" },
+    { label: "Take-home", value: takeHome, color: "bg-[#5e6ad2]", text: "text-white" },
     { label: "Taxes", value: taxes, color: "bg-amber-500", text: "text-white" },
     { label: "Benefits", value: benefits, color: "bg-emerald-500", text: "text-white" },
     { label: "Expenses", value: expenses, color: "bg-violet-500", text: "text-white" },
@@ -90,13 +90,13 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
   return (
     <div className="space-y-4 print:space-y-3">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden print:bg-white print:text-gray-900 print:border print:shadow-none">
+      <div className="bg-gradient-to-br from-[#5e6ad2] via-[#4f46e5] to-[#3730a3] rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden print:bg-white print:text-gray-900 print:border print:shadow-none">
         <div className="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl print:hidden" />
         <div className="absolute inset-0 opacity-[0.07] print:hidden" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "22px 22px" }} />
         <div className="relative text-center">
-          <p className="text-blue-100 print:text-gray-500 text-[11px] uppercase tracking-[0.18em] font-semibold mb-2">Your target rate</p>
+          <p className="text-white/80 print:text-gray-500 text-[11px] uppercase tracking-[0.18em] font-semibold mb-2">Your target rate</p>
           <p className="text-5xl md:text-6xl font-extrabold tracking-tight tabular-nums">{formatCurrency(animatedRate)}/hr</p>
-          <p className="mt-2.5 text-blue-100 print:text-gray-600 text-sm">
+          <p className="mt-2.5 text-white/80 print:text-gray-600 text-sm">
             Minimum viable: <span className="font-semibold text-white print:text-gray-900">{formatRate(results.minimumHourlyRate)}</span>
             <span className="mx-2 opacity-50">·</span>
             W-2 equivalent: <span className="font-semibold text-white print:text-gray-900">{formatCurrency(results.employedEquivalentSalary)}/yr</span>
@@ -114,8 +114,8 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
             { label: "Per week", value: formatCurrency(results.weeklyRate) },
             { label: "Per month", value: formatCurrency(results.monthlyRetainer) },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-white/15 backdrop-blur rounded-2xl py-3.5 border border-white/15 print:bg-gray-50 print:border-gray-200">
-              <p className="text-[10px] uppercase tracking-widest text-blue-100 print:text-gray-500 font-semibold">{label}</p>
+            <div key={label} className="bg-white/15 backdrop-blur rounded-2xl py-3.5 border border-white/15 print:bg-[#f8f9ff] print:border-[#eef2ff]">
+              <p className="text-[10px] uppercase tracking-widest text-white/80 print:text-gray-500 font-semibold">{label}</p>
               <p className="text-[15px] font-bold text-white print:text-gray-900 mt-0.5">{value}</p>
             </div>
           ))}
@@ -126,18 +126,18 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
       <div className="card p-4">
         <div className="flex items-center justify-between gap-3 mb-2">
           <p className="text-sm font-semibold text-gray-900">Billable time</p>
-          <p className="text-xs font-medium px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200">{billPct}% of a 40h week year</p>
+          <p className="text-xs font-medium px-2 py-1 rounded-full bg-[#eef2ff] text-[#4338ca] border border-[#c7d2fe]">{billPct}% of a 40h week year</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full transition-all duration-700" style={{ width: `${billPct}%` }} />
+            <div className="h-full bg-gradient-to-r from-[#5e6ad2] to-[#4338ca] rounded-full transition-all duration-700" style={{ width: `${billPct}%` }} />
           </div>
           <span className="text-xs font-bold text-gray-700 tabular-nums w-10 text-right">{billPct}%</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-gray-500">
-          <span className="px-2 py-1 bg-gray-50 rounded-full border border-gray-100">{annualHours.toLocaleString()}h / yr</span>
+          <span className="px-2 py-1 bg-[#f8f9ff] rounded-full border border-[#eef2ff]">{annualHours.toLocaleString()}h / yr</span>
           <span className="px-2 py-1 bg-amber-50 rounded-full border border-amber-100 text-amber-800">{52 - inputs.weeksWorkedPerYear} wks off</span>
-          <span className="px-2 py-1 bg-gray-50 rounded-full border border-gray-100">{40 - inputs.billableHoursPerWeek}h/wk non-billable</span>
+          <span className="px-2 py-1 bg-[#f8f9ff] rounded-full border border-[#eef2ff]">{40 - inputs.billableHoursPerWeek}h/wk non-billable</span>
         </div>
       </div>
 
@@ -154,11 +154,11 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
             <li>• Paid leave, equipment, overhead</li>
           </ul>
         </div>
-        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-5 shadow-sm">
-          <p className="text-[11px] uppercase tracking-widest text-blue-700 font-semibold">Your freelance rate</p>
-          <p className="text-2xl font-bold text-blue-900 mt-1 tabular-nums">{formatRate(results.targetHourlyRate)}</p>
-          <p className="text-xs text-blue-700/70 mt-1">Covers taxes, benefits, expenses & risk — nothing hidden.</p>
-          <ul className="mt-3 space-y-1 text-xs text-blue-900/80">
+        <div className="rounded-2xl border border-[#c7d2fe] bg-gradient-to-br from-[#eef2ff] to-[#e0e7ff] p-5 shadow-sm">
+          <p className="text-[11px] uppercase tracking-widest text-[#4338ca] font-semibold">Your freelance rate</p>
+          <p className="text-2xl font-bold text-[#312e81] mt-1 tabular-nums">{formatRate(results.targetHourlyRate)}</p>
+          <p className="text-xs text-[#4338ca]/70 mt-1">Covers taxes, benefits, expenses & risk — nothing hidden.</p>
+          <ul className="mt-3 space-y-1 text-xs text-[#312e81]/80">
             <li>• Taxes: {formatCurrency(results.annualTaxes)}/yr</li>
             <li>• Benefits: {formatCurrency(results.annualBenefits)}/yr</li>
             <li>• Expenses: {formatCurrency(results.annualBusinessExpenses)}/yr</li>
@@ -174,12 +174,12 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
             <button onClick={copyProposal} className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-full hover:bg-black transition-colors font-medium">
               {copiedProposal ? "Copied!" : "Copy"}
             </button>
-            <button onClick={shareProposal} className="text-xs px-3 py-1.5 bg-white border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 transition-colors font-medium">
+            <button onClick={shareProposal} className="text-xs px-3 py-1.5 bg-white border border-[#eef2ff] text-gray-700 rounded-full hover:bg-[#f8f9ff] transition-colors font-medium">
               {shared ? "Shared!" : "Share"}
             </button>
           </div>
         </div>
-        <p className="text-sm text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-3.5 border border-gray-100">{proposal}</p>
+        <p className="text-sm text-gray-700 leading-relaxed bg-[#f8f9ff] rounded-xl p-3.5 border border-[#eef2ff]">{proposal}</p>
         <p className="text-[11px] text-gray-400 mt-2">Paste into proposals, invoices, or rate sheets. Link shares your exact inputs via URL.</p>
       </div>
 
@@ -190,7 +190,7 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
           <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
         </summary>
         {/* Stacked bar */}
-        <div className="mt-4 h-4 w-full rounded-full overflow-hidden flex bg-gray-100 border border-gray-200">
+        <div className="mt-4 h-4 w-full rounded-full overflow-hidden flex bg-gray-100 border border-[#eef2ff]">
           {seg.map((s) => (
             <div key={s.label} className={`${s.color} h-full transition-all`} style={{ width: `${(s.value / total) * 100}%` }} title={`${s.label}: ${formatCurrency(s.value)}`} />
           ))}
@@ -203,11 +203,11 @@ export default function ResultCard({ results, formatCurrency, formatRate, inputs
           ))}
         </div>
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Business expenses</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBusinessExpenses)}</p></div>
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Estimated taxes</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualTaxes)}</p></div>
-          <div className="p-3 bg-gray-50 rounded-xl border border-gray-100"><p className="text-gray-500 text-xs font-medium">Benefits (health + retirement)</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBenefits)}</p></div>
+          <div className="p-3 bg-[#f8f9ff] rounded-xl border border-[#eef2ff]"><p className="text-gray-500 text-xs font-medium">Business expenses</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBusinessExpenses)}</p></div>
+          <div className="p-3 bg-[#f8f9ff] rounded-xl border border-[#eef2ff]"><p className="text-gray-500 text-xs font-medium">Estimated taxes</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualTaxes)}</p></div>
+          <div className="p-3 bg-[#f8f9ff] rounded-xl border border-[#eef2ff]"><p className="text-gray-500 text-xs font-medium">Benefits (health + retirement)</p><p className="font-bold text-gray-900 text-lg tabular-nums">{formatCurrency(results.annualBenefits)}</p></div>
         </div>
-        <div className="mt-4 pt-4 border-t border-gray-200 flex justify-between font-bold text-gray-900"><span>Total needed (with buffer)</span><span className="tabular-nums">{formatCurrency(results.totalAnnualCosts)}</span></div>
+        <div className="mt-4 pt-4 border-t border-[#eef2ff] flex justify-between font-bold text-gray-900"><span>Total needed (with buffer)</span><span className="tabular-nums">{formatCurrency(results.totalAnnualCosts)}</span></div>
       </details>
     </div>
   );
