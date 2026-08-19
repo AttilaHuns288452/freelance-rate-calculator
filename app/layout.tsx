@@ -23,7 +23,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Design Your Ideal Freelance Life — Lifestyle Calculator",
+  title: {
+    default: "Design Your Ideal Freelance Life — Lifestyle Calculator",
+    template: "%s | Freelance Calculator",
+  },
   description: "Not a rate calculator. Tell us the life you want — income, hours, time off — and we'll tell you exactly what to charge to make it real. Free lifestyle designer for freelancers.",
   keywords: [
     "freelance lifestyle calculator",
@@ -38,9 +41,9 @@ export const metadata: Metadata = {
   creator: "FreelanceRateCalculator.com",
   publisher: "FreelanceRateCalculator.com",
   metadataBase: new URL("https://freelancecalculator.xyz"),
-  robots: "index, follow",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   alternates: {
-    canonical: "https://freelancecalculator.xyz",
+    canonical: "https://freelancecalculator.xyz/",
   },
   other: {
     "google-site-verification": "85ErC2_tv1i_Oyxjrs35UXg9glDunSBPtXzjyyHbgds",
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://freelancecalculator.xyz",
+    url: "https://freelancecalculator.xyz/",
     siteName: "Freelance Lifestyle Calculator",
     title: "Design Your Ideal Freelance Life",
     description: "Tell us the life you want — how much income, hours, and time off — and we'll tell you what to charge to make it real.",

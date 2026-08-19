@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Freelance Day Rate vs Hourly: Which Earns You More? (Updated 2026)",
   description: "Day rate vs hourly rate: which pricing model earns you more? We break down the math, pros/cons, and when to use each with updated 2026 numbers.",
   alternates: {
-    canonical: "https://freelancecalculator.xyz/blog/how-much-to-charge-freelancer-day-rate-vs-hourly",
+    canonical: "https://freelancecalculator.xyz/blog/how-much-to-charge-freelancer-day-rate-vs-hourly/",
   },
   openGraph: {
     title: "Freelance Day Rate vs Hourly: Which Earns You More? (Updated 2026)",

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Freelancer vs Employee: The Complete Financial Comparison (2026)",
   description: "The true cost of freelancing vs being an employee broken down with 2026 numbers. It's not just about taxes — the gap is bigger than you think.",
   robots: "index, follow",
-  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelancer-vs-employee-cost-comparison-2026" },
+  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelancer-vs-employee-cost-comparison-2026/" },
   openGraph: {
     title: "Freelancer vs Employee: The Complete Financial Comparison (2026)",
     description: "The true cost of freelancing vs being an employee — with 2026 numbers.",

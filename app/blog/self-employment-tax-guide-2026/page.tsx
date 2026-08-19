@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "The Freelancer's Guide to Self-Employment Taxes (2026)",
   description: "Everything freelancers need to know about self-employment tax in 2026: the 15.3% rate, quarterly payments, deductions, Solo 401k limits, and how to avoid surprises at tax time.",
   robots: "index, follow",
-  alternates: { canonical: "https://freelancecalculator.xyz/blog/self-employment-tax-guide-2026" },
+  alternates: { canonical: "https://freelancecalculator.xyz/blog/self-employment-tax-guide-2026/" },
   openGraph: {
     title: "The Freelancer's Guide to Self-Employment Taxes (2026)",
     description: "Everything freelancers need to know about self-employment tax in 2026.",

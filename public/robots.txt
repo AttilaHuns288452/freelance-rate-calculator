@@ -4,6 +4,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://freelancecalculator.xyz/sitemap.xml
-
-# Crawl-delay (be nice to servers)
-Crawl-delay: 10

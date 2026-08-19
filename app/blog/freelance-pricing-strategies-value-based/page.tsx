@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Freelance Pricing Strategies: Hourly vs Value-Based vs Project-Based",
   description: "Which pricing model earns you the most? A comprehensive guide to hourly, value-based, project-based, and retainer pricing with real income comparisons.",
   robots: "index, follow",
-  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelance-pricing-strategies-value-based" },
+  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelance-pricing-strategies-value-based/" },
   openGraph: {
     title: "Freelance Pricing Strategies: Hourly vs Value-Based vs Project-Based",
     description: "Which pricing model earns you the most? A comprehensive guide to freelance pricing strategies with real income comparisons.",

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "How to Calculate Your Freelance Retainer Rate (With Templates)",
   description: "Learn how to price retainer agreements so you get recurring income without shortchanging yourself. Includes email templates and a formula that works.",
   robots: "index, follow",
-  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelance-retainer-rate-calculator-templates" },
+  alternates: { canonical: "https://freelancecalculator.xyz/blog/freelance-retainer-rate-calculator-templates/" },
   openGraph: {
     title: "How to Calculate Your Freelance Retainer Rate (With Templates)",
     description: "Price retainer agreements so you get recurring income without shortchanging yourself. Includes email templates and the formula.",

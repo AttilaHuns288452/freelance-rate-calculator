@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Freelance Tax Deductions Guide: What You Can Write Off (Updated 2026)",
   description: "Maximize your tax savings with our comprehensive guide to freelance deductions. Home office, equipment, software, health insurance, and more. Updated for 2026.",
   alternates: {
-    canonical: "https://freelancecalculator.xyz/blog/freelance-tax-deductions-calculator-write-offs",
+    canonical: "https://freelancecalculator.xyz/blog/freelance-tax-deductions-calculator-write-offs/",
   },
   openGraph: {
     title: "Freelance Tax Deductions Guide: What You Can Write Off (Updated 2026)",

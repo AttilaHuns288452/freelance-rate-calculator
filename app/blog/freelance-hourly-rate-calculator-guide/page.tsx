@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",
   description: "Learn how to calculate your true freelance hourly rate with our step-by-step guide. Includes taxes, expenses, benefits, and risk buffer.",
   alternates: {
-    canonical: "https://freelancecalculator.xyz/blog/freelance-hourly-rate-calculator-guide",
+    canonical: "https://freelancecalculator.xyz/blog/freelance-hourly-rate-calculator-guide/",
   },
   openGraph: {
     title: "Freelance Hourly Rate Calculator: Complete Guide (Updated 2026)",

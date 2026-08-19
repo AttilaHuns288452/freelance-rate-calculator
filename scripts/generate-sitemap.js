@@ -54,9 +54,6 @@ Allow: /
 
 # Sitemap
 Sitemap: ${BASE_URL}/sitemap.xml
-
-# Crawl-delay (be nice to servers)
-Crawl-delay: 10
 `;
   const robotsPublicPath = path.join(__dirname, "..", "public", "robots.txt");
   const robotsOutPath = path.join(__dirname, "..", "out", "robots.txt");
